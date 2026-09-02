@@ -1,0 +1,472 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-50: #FDFBF0;
+  --color-gold-100: #FAF5D8;
+  --color-gold-200: #F4E7A7;
+  --color-gold-300: #EBD471;
+  --color-gold-400: #E3C143;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #BA9427;
+  --color-gold-700: #94721C;
+  --color-gold-800: #7A5B1B;
+  --color-gold-900: #674B1B;
+  --color-gold-shimmer: #FFEAA7;
+
+  --color-burgundy-50: #FDF2F4;
+  --color-burgundy-100: #FCE7EA;
+  --color-burgundy-200: #F8D2D9;
+  --color-burgundy-300: #F1ACB8;
+  --color-burgundy-700: #831227;
+  --color-burgundy-800: #661021;
+  --color-burgundy-900: #4A0E17;
+  --color-burgundy-950: #2C050C;
+
+  --color-champagne-50: #FFFDF9;
+  --color-champagne-100: #FAF6EE;
+  --color-champagne-200: #F5EEDD;
+  --color-champagne-300: #EDE0C5;
+  --color-champagne-400: #E2CEAA;
+  --color-champagne-500: #D5BB8E;
+
+  --font-cinzel: "Cinzel Decorative", Cinzel, serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-script: "Great Vibes", cursive;
+  --font-pinyon: "Pinyon Script", cursive;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-caveat: "Caveat", cursive;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+:root {
+  --gold-primary: #D4AF37;
+  --gold-light: #F4E7A7;
+  --gold-dark: #8A6D1F;
+  --burgundy-royal: #4A0E17;
+  --champagne-bg: #FAF6EE;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: #35150e;
+  color: #2D2424;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   DESKTOP MOCKUP VIEWPORT & IPHONE 15 PRO CHASSIS
+   ========================================================================== */
+
+/* Outer Desktop Background Showcase in #4d2218 with Matte Embedded Floral Finish */
+.desktop-viewport-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  background-color: #4d2218;
+  background-image: 
+    radial-gradient(circle at 50% 35%, rgba(105, 48, 35, 0.75) 0%, rgba(77, 34, 24, 0.92) 55%, #35150e 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23ffdfc5' stroke-opacity='0.1' stroke-width='1.2'%3E%3Cpath d='M40 0 C40 18 18 40 0 40 C18 40 40 62 40 80 C40 62 62 40 80 40 C62 40 40 18 40 0 Z'/%3E%3Ccircle cx='40' cy='40' r='10' stroke='%23ffdfc5' stroke-opacity='0.12' fill='%23ffdfc5' fill-opacity='0.04'/%3E%3Cpath d='M40 30 C35 35 35 45 40 50 C45 45 45 35 40 30 Z' fill='%23ffdfc5' fill-opacity='0.06'/%3E%3Cpath d='M30 40 C35 35 45 35 50 40 C45 45 35 45 30 40 Z' fill='%23ffdfc5' fill-opacity='0.06'/%3E%3Ccircle cx='0' cy='0' r='6' stroke='%23ffdfc5' stroke-opacity='0.1'/%3E%3Ccircle cx='80' cy='0' r='6' stroke='%23ffdfc5' stroke-opacity='0.1'/%3E%3Ccircle cx='0' cy='80' r='6' stroke='%23ffdfc5' stroke-opacity='0.1'/%3E%3Ccircle cx='80' cy='80' r='6' stroke='%23ffdfc5' stroke-opacity='0.1'/%3E%3Cpath d='M0 20 C10 20 20 10 20 0 M60 0 C60 10 70 20 80 20 M80 60 C70 60 60 70 60 80 M20 80 C20 70 10 60 0 60'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%, 72px 72px;
+  perspective: 1200px;
+}
+
+/* Ambient glow under the iPhone */
+.desktop-viewport-container::before {
+  content: '';
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(255, 205, 150, 0.08) 0%, rgba(77, 34, 24, 0.2) 45%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(50px);
+}
+
+/* Desktop iPhone Chassis Wrapper */
+.iphone-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(70.6mm, calc(93vh * (70.6 / 146.6)));
+  height: min(146.6mm, 93vh);
+  aspect-ratio: 70.6 / 146.6;
+  transform: scale(1.242);
+  transform-origin: center center;
+  z-index: 10;
+}
+
+/* Physical Hardware Buttons (Action, Volume Up/Down, Power, Camera Control) */
+.btn-hardware {
+  position: absolute;
+  z-index: 1;
+  cursor: default;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+/* Left Buttons (Titanium Finish) */
+.btn-action {
+  top: 104px;
+  left: -5.5px;
+  width: 4.5px;
+  height: 26px;
+  background: linear-gradient(180deg, #584f56 0%, #352c33 50%, #1f171d 100%);
+  border-radius: 3px 0 0 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.6), -1px 0 2px rgba(0,0,0,0.5);
+}
+
+.btn-vol-up {
+  top: 144px;
+  left: -5.5px;
+  width: 4.5px;
+  height: 48px;
+  background: linear-gradient(180deg, #584f56 0%, #352c33 50%, #1f171d 100%);
+  border-radius: 3px 0 0 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.6), -1px 0 2px rgba(0,0,0,0.5);
+}
+
+.btn-vol-down {
+  top: 202px;
+  left: -5.5px;
+  width: 4.5px;
+  height: 48px;
+  background: linear-gradient(180deg, #584f56 0%, #352c33 50%, #1f171d 100%);
+  border-radius: 3px 0 0 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.6), -1px 0 2px rgba(0,0,0,0.5);
+}
+
+/* Right Buttons (Titanium Finish) */
+.btn-power {
+  top: 150px;
+  right: -5.5px;
+  width: 4.5px;
+  height: 70px;
+  background: linear-gradient(180deg, #584f56 0%, #352c33 50%, #1f171d 100%);
+  border-radius: 0 3px 3px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.6), 1px 0 2px rgba(0,0,0,0.5);
+}
+
+.btn-camera-control {
+  bottom: 124px;
+  right: -4px;
+  width: 3.5px;
+  height: 56px;
+  background: linear-gradient(180deg, #443c43 0%, #292228 50%, #181216 100%);
+  border-radius: 0 2px 2px 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Main iPhone Titanium Chassis */
+.iphone-device-frame {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 1px #786f77,
+    0 0 0 4px #2b242a,
+    0 0 0 5.5px #151014,
+    0 35px 80px -15px rgba(0, 0, 0, 0.95),
+    0 10px 30px rgba(0, 0, 0, 0.7),
+    0 0 65px rgba(212, 175, 55, 0.16);
+  border: 3.5px solid #000;
+}
+
+/* Dynamic Island */
+.iphone-notch {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82px;
+  height: 23px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 999;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8), inset 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.notch-lens {
+  width: 10.5px;
+  height: 10.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1d2740 0%, #0a0d16 65%, #000 100%);
+  box-shadow: inset 0 0 2px #3c5a94;
+}
+
+.notch-sensor {
+  width: 7.5px;
+  height: 7.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #0e121a 0%, #000 100%);
+}
+
+/* Inner App Scrollable Viewport with Hardware Acceleration */
+.inner-app-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  background-color: #2E050B;
+  background-image: url('/plain bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 46px;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.inner-app-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================================
+   NATIVE FULLSCREEN ON REAL MOBILE SCREENS (<= 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  html {
+    font-size: 17px;
+  }
+
+  body {
+    background-color: #2E050B;
+    overflow-y: auto;
+  }
+
+  .desktop-viewport-container {
+    display: block;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: transparent;
+    perspective: none;
+  }
+
+  .desktop-viewport-container::before {
+    display: none;
+  }
+
+  .iphone-wrapper {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: block;
+    transform: none !important;
+  }
+
+  .iphone-device-frame {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent;
+  }
+
+  .btn-hardware,
+  .iphone-notch {
+    display: none !important;
+  }
+
+  .inner-app-container {
+    border-radius: 0 !important;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  /* Subtle proportional boost for mobile text sizes */
+  .font-cormorant {
+    letter-spacing: 0.22em;
+  }
+
+  /* Section Numbers & Headers on Mobile */
+  [class*="font-cormorant"][class*="text-2xl"] {
+    font-size: 1.85rem !important;
+  }
+
+  [class*="font-cormorant"][class*="text-3xl"] {
+    font-size: 2.25rem !important;
+  }
+
+  [class*="font-cormorant"][class*="text-4xl"] {
+    font-size: 2.75rem !important;
+  }
+
+  /* Micro badges & labels on Mobile */
+  [class*="text-[10px]"] {
+    font-size: 11.5px !important;
+  }
+
+  [class*="text-[9px]"] {
+    font-size: 10.5px !important;
+  }
+
+  [class*="text-[8.5px]"] {
+    font-size: 10px !important;
+  }
+
+  [class*="text-[8px]"] {
+    font-size: 9.5px !important;
+  }
+
+  [class*="text-[7.5px]"] {
+    font-size: 9px !important;
+  }
+
+  [class*="text-xs"] {
+    font-size: 0.84rem !important;
+  }
+
+  [class*="text-sm"] {
+    font-size: 0.96rem !important;
+  }
+}
+
+/* ==========================================================================
+   APP LUXURY STYLES & ANIMATIONS
+   ========================================================================== */
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: rgba(38, 6, 12, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(212, 175, 55, 0.08);
+}
+
+.glass-dark {
+  background: rgba(32, 4, 9, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 20px rgba(212, 175, 55, 0.15) inset;
+}
+
+.glass-gold {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 245, 216, 0.65) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.18);
+}
+
+/* Gold & Burgundy Text Gradients */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFE494 0%, #D4AF37 40%, #9E7D23 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-burgundy-gradient {
+  background: linear-gradient(135deg, #831227 0%, #4A0E17 60%, #2A050C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gold Shimmer Button */
+.btn-gold-luxury {
+  position: relative;
+  background: linear-gradient(135deg, #E5C252 0%, #D4AF37 50%, #B89222 100%);
+  color: #241600;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.btn-gold-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  transition: 0.75s;
+}
+
+.btn-gold-luxury:hover::before {
+  left: 150%;
+}
+
+.btn-gold-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(212, 175, 55, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Ken Burns Continuous Cinematic Keyframes */
+@keyframes kenburns-1 {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-1%, -1.2%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+@keyframes kenburns-2 {
+  0% { transform: scale(1.06) translate(1%, 0.8%); }
+  50% { transform: scale(1.15) translate(-1.2%, 0.4%); }
+  100% { transform: scale(1.06) translate(1%, 0.8%); }
+}
+
+.animate-kenburns-1 {
+  animation: kenburns-1 20s ease-in-out infinite alternate;
+}
+
+.animate-kenburns-2 {
+  animation: kenburns-2 22s ease-in-out infinite alternate;
+}
+
+/* SVG Stroke Dash Draw */
+.stroke-dash-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: strokeDash 3.5s ease-in-out forwards;
+}
+
+@keyframes strokeDash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Luxury Crimson Minimal Texture Background */
+.bg-paper-pattern {
+  background-color: #2E050B;
+  background-image: url('/plain bg.jpeg');
+  background-size: cover;
+  background-position: center;
+}
