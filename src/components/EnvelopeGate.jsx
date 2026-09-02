@@ -5,107 +5,130 @@ import { Volume2, VolumeX } from 'lucide-react';
 import { romanticAudio } from '../utils/audioSynthesizer';
 import openAnimationBg from '../assets/open animation.webp';
 
-// Realistic 35mm Cinematic Film Projector Light Beam & Dust Motes
+// Realistic 35mm Film Projector Light Originating from the Physical Projector Lens
 function CinematicProjectorLight() {
-  // Dust particles floating through the illuminated light cone
+  // Dust motes drifting upwards inside the light cone
   const dustMotes = [
-    { id: 1, left: '46%', bottom: '28%', size: 2.2, duration: 4.8, delay: 0.2, xRange: [-12, 16] },
-    { id: 2, left: '52%', bottom: '34%', size: 1.8, duration: 5.4, delay: 0.9, xRange: [8, -14] },
-    { id: 3, left: '42%', bottom: '42%', size: 2.5, duration: 4.2, delay: 1.5, xRange: [-18, 10] },
-    { id: 4, left: '58%', bottom: '48%', size: 1.5, duration: 6.0, delay: 0.6, xRange: [14, -12] },
-    { id: 5, left: '48%', bottom: '55%', size: 2.0, duration: 5.1, delay: 2.1, xRange: [-10, 18] },
-    { id: 6, left: '38%', bottom: '62%', size: 1.6, duration: 4.6, delay: 1.2, xRange: [-15, 8] },
-    { id: 7, left: '60%', bottom: '68%', size: 2.4, duration: 5.8, delay: 2.7, xRange: [12, -16] },
-    { id: 8, left: '50%', bottom: '75%', size: 1.7, duration: 4.9, delay: 0.4, xRange: [-8, 14] },
-    { id: 9, left: '44%', bottom: '82%', size: 2.1, duration: 5.5, delay: 1.8, xRange: [-14, 12] },
-    { id: 10, left: '54%', bottom: '88%', size: 1.4, duration: 6.2, delay: 3.1, xRange: [10, -10] },
+    { id: 1, left: '48%', top: '76%', size: 2.0, duration: 4.5, delay: 0.2, xRange: [-8, 10] },
+    { id: 2, left: '52%', top: '68%', size: 1.8, duration: 5.2, delay: 0.8, xRange: [10, -12] },
+    { id: 3, left: '44%', top: '58%', size: 2.4, duration: 4.2, delay: 1.4, xRange: [-16, 12] },
+    { id: 4, left: '56%', top: '50%', size: 1.6, duration: 5.8, delay: 0.5, xRange: [14, -10] },
+    { id: 5, left: '40%', top: '42%', size: 2.2, duration: 4.8, delay: 2.0, xRange: [-18, 14] },
+    { id: 6, left: '60%', top: '35%', size: 1.5, duration: 4.6, delay: 1.1, xRange: [16, -12] },
+    { id: 7, left: '34%', top: '26%', size: 2.5, duration: 5.6, delay: 2.5, xRange: [-20, 16] },
+    { id: 8, left: '66%', top: '20%', size: 1.9, duration: 5.0, delay: 0.3, xRange: [18, -14] },
+    { id: 9, left: '46%', top: '14%', size: 2.1, duration: 5.4, delay: 1.7, xRange: [-15, 15] },
+    { id: 10, left: '54%', top: '8%', size: 1.4, duration: 6.0, delay: 3.0, xRange: [12, -12] },
   ];
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-5">
-      {/* 1. Volumetric Conical Projector Beam (Shooting Upwards from bottom center) */}
+      {/* 1. Volumetric Optical Projection Beam - Originates precisely at Projector Lens (50% X, 81.5% Y) */}
       <motion.div
         animate={{
-          opacity: [0.82, 0.98, 0.88, 1, 0.85, 0.96, 0.9],
-          scaleY: [0.99, 1.01, 1, 1.01, 0.99],
+          opacity: [0.85, 1, 0.9, 0.98, 0.86, 0.95, 0.88],
         }}
         transition={{
-          duration: 3.5,
+          duration: 3.2,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
-        className="absolute inset-x-0 bottom-0 top-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'conic-gradient(from 180deg at 50% 100%, rgba(0,0,0,0) 148deg, rgba(255, 235, 180, 0.28) 166deg, rgba(255, 248, 220, 0.42) 180deg, rgba(255, 235, 180, 0.28) 194deg, rgba(0,0,0,0) 212deg)',
-          filter: 'blur(2px)',
+          background: 'radial-gradient(ellipse at 50% 81.5%, rgba(255, 248, 225, 0.55) 0%, rgba(255, 230, 160, 0.32) 30%, rgba(255, 205, 100, 0.14) 65%, transparent 95%)',
+          clipPath: 'polygon(0% 0%, 100% 0%, 53.5% 81.5%, 46.5% 81.5%)',
+          filter: 'blur(2.5px)',
           mixBlendMode: 'screen',
         }}
       />
 
-      {/* 2. Film Gate Celluloid Flicker / Shimmer Layer (Simulating 24fps film shutter) */}
+      {/* 2. Secondary Intense Center Core Light Ray */}
       <motion.div
         animate={{
-          opacity: [0.35, 0.55, 0.4, 0.65, 0.38, 0.58, 0.42],
+          opacity: [0.6, 0.85, 0.65, 0.9, 0.58],
         }}
         transition={{
-          duration: 0.24,
+          duration: 2.2,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to top, rgba(255, 255, 255, 0.85) 0%, rgba(255, 240, 190, 0.45) 45%, transparent 100%)',
+          clipPath: 'polygon(20% 0%, 80% 0%, 51.5% 81.5%, 48.5% 81.5%)',
+          filter: 'blur(3px)',
+          mixBlendMode: 'screen',
+        }}
+      />
+
+      {/* 3. 24fps Film Shutter Celluloid Jitter Flicker */}
+      <motion.div
+        animate={{
+          opacity: [0.25, 0.45, 0.28, 0.52, 0.22, 0.48, 0.3],
+        }}
+        transition={{
+          duration: 0.18,
           repeat: Infinity,
           ease: 'linear',
         }}
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 65% 55% at 50% 60%, rgba(255, 225, 150, 0.18) 0%, rgba(255, 200, 100, 0.08) 50%, transparent 80%)',
+          background: 'radial-gradient(circle at 50% 55%, rgba(255, 235, 175, 0.22) 0%, transparent 70%)',
+          clipPath: 'polygon(0% 0%, 100% 0%, 54% 81.5%, 46% 81.5%)',
           mixBlendMode: 'screen',
         }}
       />
 
-      {/* 3. Projector Lens Flare Core (At the base where the light originates) */}
-      <div className="absolute bottom-[22%] left-1/2 -translate-x-1/2 flex flex-col items-center">
-        {/* Hot Glowing Lens Core */}
+      {/* 4. Projector Lens Aperture Flare & Hot Glow (Positioned at 50% X, 81.5% Y) */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none"
+        style={{ top: '81.5%' }}
+      >
+        {/* Hot Incandescent Lamp Core inside the Lens */}
         <motion.div
           animate={{
-            scale: [0.94, 1.08, 0.98, 1.06, 0.94],
-            opacity: [0.88, 1, 0.92, 1, 0.88],
+            scale: [0.92, 1.12, 0.96, 1.08, 0.92],
+            opacity: [0.9, 1, 0.92, 1, 0.9],
           }}
           transition={{
-            duration: 2.8,
+            duration: 2.5,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="w-16 h-16 rounded-full"
+          className="w-10 h-10 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,238,180,0.85) 30%, rgba(255,185,70,0.4) 60%, transparent 100%)',
-            filter: 'blur(4px)',
+            background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,242,190,0.9) 35%, rgba(255,180,60,0.5) 65%, transparent 100%)',
+            filter: 'blur(3px)',
             mixBlendMode: 'screen',
           }}
         />
 
-        {/* Anamorphic Horizontal Lens Flare Streak */}
+        {/* Anamorphic Horizontal Lens Flare Streak across the Lens */}
         <motion.div
           animate={{
-            scaleX: [0.85, 1.15, 0.92, 1.1, 0.85],
-            opacity: [0.6, 0.95, 0.7, 0.9, 0.6],
+            scaleX: [0.85, 1.2, 0.9, 1.15, 0.85],
+            opacity: [0.65, 1, 0.75, 0.95, 0.65],
           }}
           transition={{
-            duration: 3.2,
+            duration: 3.0,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="w-48 sm:w-64 h-[2px] -mt-8 rounded-full"
+          className="w-40 sm:w-56 h-[2px] -mt-5 rounded-full"
           style={{
-            background: 'linear-gradient(90deg, transparent 0%, rgba(255,240,190,0.3) 25%, rgba(255,255,255,0.95) 50%, rgba(255,240,190,0.3) 75%, transparent 100%)',
-            filter: 'blur(1px)',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(255,235,170,0.4) 25%, rgba(255,255,255,1) 50%, rgba(255,235,170,0.4) 75%, transparent 100%)',
+            filter: 'blur(0.8px)',
             mixBlendMode: 'screen',
           }}
         />
       </div>
 
-      {/* 4. Floating Illuminated Microscopic Dust Motes */}
+      {/* 5. Floating Illuminated Dust Particles rising in the Light Beam */}
       {dustMotes.map((mote) => (
         <motion.div
           key={mote.id}
           animate={{
-            y: [-15, -60, -15],
+            y: [-10, -45, -10],
             x: mote.xRange,
             opacity: [0, 0.85, 0],
             scale: [0.8, 1.2, 0.8],
@@ -116,13 +139,13 @@ function CinematicProjectorLight() {
             delay: mote.delay,
             ease: 'easeInOut',
           }}
-          className="absolute rounded-full bg-[#FFFBEA]"
+          className="absolute rounded-full bg-[#FFFCE8]"
           style={{
             left: mote.left,
-            bottom: mote.bottom,
+            top: mote.top,
             width: `${mote.size}px`,
             height: `${mote.size}px`,
-            boxShadow: '0 0 6px 1px rgba(255, 230, 150, 0.8)',
+            boxShadow: '0 0 6px 1px rgba(255, 235, 160, 0.85)',
             mixBlendMode: 'screen',
           }}
         />
@@ -205,7 +228,7 @@ export function EnvelopeGate({ onOpen }) {
         className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none transition-transform duration-700 hover:scale-[1.01]"
       />
 
-      {/* Realistic Animated Volumetric Light Beam & Dust Motes */}
+      {/* Realistic Animated Volumetric Light Beam Originating from Projector Lens */}
       <CinematicProjectorLight />
 
       {/* Cinematic Text & UI Overlay Container */}
