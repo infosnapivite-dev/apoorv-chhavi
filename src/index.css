@@ -445,3 +445,28 @@ canvas,
   contain: layout style paint;
 }
 
+/* ==========================================================================
+   GALLERY SECTION RESPONSIVE HEADING
+   - Mobile (<= 600px): 1 single row, prominent size
+   - Desktop (> 600px): 2 rows, reduced elegant font size
+   ========================================================================== */
+@media (min-width: 601px) {
+  .gallery-heading-title {
+    font-size: 17px !important;
+    line-height: 1.28 !important;
+    letter-spacing: 0.22em !important;
+  }
+  .gallery-heading-title .gallery-heading-word {
+    display: block !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-heading-title {
+    white-space: nowrap !important;
+  }
+  .gallery-heading-title .gallery-heading-word {
+    display: inline !important;
+  }
+}
+

@@ -170,7 +170,7 @@ function RealisticTheatricalSpotlight() {
           opacity: [0.85, 1, 0.88, 1, 0.85]
         }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[56px] sm:top-[50px] left-1/2 -translate-x-1/2 w-[310px] sm:w-[300px] h-[300px] sm:h-[280px] pointer-events-none"
+        className="absolute top-[56px] sm:top-[50px] left-1/2 -translate-x-1/2 w-[320px] sm:w-[300px] h-[340px] sm:h-[280px] pointer-events-none"
         style={{
           background: 'radial-gradient(ellipse at 50% 0%, rgba(255, 222, 150, 0.38) 0%, rgba(255, 185, 75, 0.18) 42%, rgba(26, 3, 7, 0) 78%)',
           clipPath: 'polygon(42% 0%, 58% 0%, 100% 100%, 0% 100%)',
@@ -257,7 +257,7 @@ export const FooterThankYou = React.memo(function FooterThankYou({ couple }) {
       </motion.div>
 
       {/* Main Container */}
-      <div className="w-full max-w-sm mx-auto relative my-auto flex flex-col items-center justify-center text-center">
+      <div className="w-full max-w-sm mx-auto relative my-auto flex flex-col items-center justify-center text-center pt-1 sm:pt-2">
         
         {/* Theatrical Spotlight Lamp */}
         <motion.div
@@ -270,138 +270,141 @@ export const FooterThankYou = React.memo(function FooterThankYou({ couple }) {
           <RealisticTheatricalSpotlight />
         </motion.div>
 
-        {/* Spotlighted Quote Typography (Exact text matching client specification) */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 sm:mt-7 relative z-10 w-full text-center flex flex-col items-center justify-center"
-        >
-          <p className="font-cormorant text-[14px] sm:text-[10px] tracking-[0.16em] text-[#EBD1A5]/90 uppercase font-light leading-[1.6] text-center">
-            <motion.span
-              initial={{ opacity: 0, y: 6 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.45 }}
-              className="block whitespace-nowrap"
-            >
-              LIGHTS. PEOPLE. GOOD TIMES.
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 6 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.52 }}
-              className="block whitespace-nowrap"
-            >
-              THE CELEBRATIONS BEGIN.
-            </motion.span>
-          </p>
-        </motion.div>
-
-        {/* Main Grand Headline: "SEE YOU AT THE PREMIERE." */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.9, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-4 sm:mt-4 mb-0.5 relative z-10 w-full text-center flex flex-col items-center justify-center"
-        >
-          <h2 className="font-cormorant text-[22px] sm:text-[15px] md:text-[16px] tracking-[0.18em] text-[#EBD1A5] font-normal uppercase leading-[1.3] text-center">
-            <motion.span
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.75, delay: 0.65 }}
-              className="block whitespace-nowrap"
-            >
-              SEE YOU AT
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.75, delay: 0.73 }}
-              className="block whitespace-nowrap"
-            >
-              THE PREMIERE.
-            </motion.span>
-          </h2>
-        </motion.div>
-
-        {/* Hand-Drawn Heart Icon */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.6 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.82, type: "spring", stiffness: 220 }}
-          className="my-3.5 sm:my-3 flex items-center justify-center mx-auto relative z-10"
-        >
-          <HandDrawnHeart className="w-5 h-5 sm:w-4 sm:h-4 text-[#EBD1A5]" />
-        </motion.div>
-
-        {/* Couple & Date & GOA */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.85, delay: 0.92, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-1.5 relative z-10 w-full text-center flex flex-col items-center justify-center"
-        >
-          <motion.h3
-            initial={{ opacity: 0, y: 6 }}
+        {/* Spotlighted Text Group (Placed downside - enhanced for mobile) */}
+        <div className="w-full flex flex-col items-center justify-center text-center mt-14 sm:mt-11 translate-y-3.5 sm:translate-y-2.5">
+          {/* Spotlighted Quote Typography (Exact text matching client specification) */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.95 }}
-            className="font-cormorant text-[17px] sm:text-[11px] tracking-[0.22em] text-[#EBD1A5] font-normal uppercase leading-none text-center whitespace-nowrap"
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 w-full text-center flex flex-col items-center justify-center"
           >
-            APOORV &amp; CHHAVI
-          </motion.h3>
+            <p className="font-cormorant text-[14px] sm:text-[10px] tracking-[0.16em] text-[#EBD1A5]/90 uppercase font-light leading-[1.6] text-center">
+              <motion.span
+                initial={{ opacity: 0, y: 6 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.45 }}
+                className="block whitespace-nowrap"
+              >
+                LIGHTS. PEOPLE. GOOD TIMES.
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 6 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.52 }}
+                className="block whitespace-nowrap"
+              >
+                THE CELEBRATIONS BEGIN.
+              </motion.span>
+            </p>
+          </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 6 }}
+          {/* Main Grand Headline: "SEE YOU AT THE PREMIERE." */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 1.02 }}
-            className="font-cormorant text-[13.5px] sm:text-[9px] tracking-[0.20em] text-[#EBD1A5]/85 font-light uppercase leading-none text-center pt-0.5 whitespace-nowrap"
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.9, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-4 sm:mt-4 mb-0.5 relative z-10 w-full text-center flex flex-col items-center justify-center"
           >
-            9 • 10 • 11 DECEMBER 2026
-          </motion.p>
+            <h2 className="font-cormorant text-[22px] sm:text-[15px] md:text-[16px] tracking-[0.18em] text-[#EBD1A5] font-normal uppercase leading-[1.3] text-center">
+              <motion.span
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, delay: 0.65 }}
+                className="block whitespace-nowrap"
+              >
+                SEE YOU AT
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, delay: 0.73 }}
+                className="block whitespace-nowrap"
+              >
+                THE PREMIERE.
+              </motion.span>
+            </h2>
+          </motion.div>
 
-          <motion.h4
-            initial={{ opacity: 0, scale: 0.95 }}
+          {/* Hand-Drawn Heart Icon */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.75, delay: 1.08 }}
-            className="font-cormorant text-[21px] sm:text-sm tracking-[0.28em] text-[#EBD1A5] font-light uppercase leading-tight text-center pt-0.5 whitespace-nowrap"
+            transition={{ duration: 0.8, delay: 0.82, type: "spring", stiffness: 220 }}
+            className="my-3.5 sm:my-3 flex items-center justify-center mx-auto relative z-10"
           >
-            GOA
-          </motion.h4>
-        </motion.div>
+            <HandDrawnHeart className="w-5 h-5 sm:w-4 sm:h-4 text-[#EBD1A5]" />
+          </motion.div>
 
-        {/* 2 Underlined Action Links: "SHARE INVITATION" & "REPLAY THE STORY" */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.85, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center justify-center gap-2.5 w-full mx-auto mt-5 sm:mt-5 text-[13.5px] sm:text-[8.5px] font-cormorant tracking-[0.20em] uppercase relative z-20"
-        >
-          <button
-            onClick={() => setIsShareModalOpen(true)}
-            className="pb-0.5 border-b border-[#EBD1A5]/50 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
+          {/* Couple & Date & GOA */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.85, delay: 0.92, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-1.5 relative z-10 w-full text-center flex flex-col items-center justify-center"
           >
-            SHARE INVITATION
-          </button>
+            <motion.h3
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.95 }}
+              className="font-cormorant text-[17px] sm:text-[11px] tracking-[0.22em] text-[#EBD1A5] font-normal uppercase leading-none text-center whitespace-nowrap"
+            >
+              APOORV &amp; CHHAVI
+            </motion.h3>
 
-          <button
-            onClick={handleReplayStory}
-            className="pb-0.5 border-b border-[#EBD1A5]/50 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
+            <motion.p
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 1.02 }}
+              className="font-cormorant text-[13.5px] sm:text-[9px] tracking-[0.20em] text-[#EBD1A5]/85 font-light uppercase leading-none text-center pt-0.5 whitespace-nowrap"
+            >
+              9 • 10 • 11 DECEMBER 2026
+            </motion.p>
+
+            <motion.h4
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, delay: 1.08 }}
+              className="font-cormorant text-[21px] sm:text-sm tracking-[0.28em] text-[#EBD1A5] font-light uppercase leading-tight text-center pt-0.5 whitespace-nowrap"
+            >
+              GOA
+            </motion.h4>
+          </motion.div>
+
+          {/* 2 Underlined Action Links: "SHARE INVITATION" & "REPLAY THE STORY" */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.85, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col items-center justify-center gap-2.5 w-full mx-auto mt-5 sm:mt-5 text-[13.5px] sm:text-[8.5px] font-cormorant tracking-[0.20em] uppercase relative z-20"
           >
-            REPLAY THE STORY
-          </button>
-        </motion.div>
+            <button
+              onClick={() => setIsShareModalOpen(true)}
+              className="pb-0.5 border-b border-[#EBD1A5]/50 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
+            >
+              SHARE INVITATION
+            </button>
+
+            <button
+              onClick={handleReplayStory}
+              className="pb-0.5 border-b border-[#EBD1A5]/50 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
+            >
+              REPLAY THE STORY
+            </button>
+          </motion.div>
+        </div>
 
       </div>
 

@@ -92,15 +92,16 @@ export const GallerySection = React.memo(function GallerySection({ items = DEFAU
             CINEMATIC FRAMES
           </motion.p>
 
-          {/* MOMENTS IN TIME (Single Row) */}
+          {/* MOMENTS IN TIME (2 Rows on Desktop, Single Row on Mobile) */}
           <motion.h2
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75, delay: 0.35 }}
-            className="font-cormorant text-[22px] min-[360px]:text-[24px] sm:text-[23px] tracking-[0.18em] sm:tracking-[0.2em] text-[#F5EAD4] font-normal uppercase leading-tight whitespace-nowrap mt-1 text-center"
+            className="gallery-heading-title font-cormorant text-[22px] min-[360px]:text-[24px] sm:text-[17px] tracking-[0.18em] sm:tracking-[0.22em] text-[#F5EAD4] font-normal uppercase leading-tight sm:leading-[1.28] mt-1 text-center"
           >
-            MOMENTS IN TIME
+            <span className="gallery-heading-word inline sm:block">MOMENTS</span>{' '}
+            <span className="gallery-heading-word inline sm:block">IN TIME</span>
           </motion.h2>
         </motion.div>
 
