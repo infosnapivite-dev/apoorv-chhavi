@@ -206,7 +206,7 @@ function RealisticTheatricalSpotlight() {
   );
 }
 
-export function FooterThankYou({ couple }) {
+export const FooterThankYou = React.memo(function FooterThankYou({ couple }) {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -270,7 +270,7 @@ export function FooterThankYou({ couple }) {
           <RealisticTheatricalSpotlight />
         </motion.div>
 
-        {/* Spotlighted Quote Typography (Exact text matching client reference) */}
+        {/* Spotlighted Quote Typography (Exact text matching client specification) */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -278,7 +278,7 @@ export function FooterThankYou({ couple }) {
           transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6 sm:mt-7 relative z-10 w-full text-center flex flex-col items-center justify-center"
         >
-          <p className="font-cormorant text-[14px] sm:text-[9px] tracking-[0.16em] text-[#EBD1A5]/90 uppercase font-light leading-[1.6] text-center">
+          <p className="font-cormorant text-[14px] sm:text-[10px] tracking-[0.16em] text-[#EBD1A5]/90 uppercase font-light leading-[1.6] text-center">
             <motion.span
               initial={{ opacity: 0, y: 6 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -286,7 +286,7 @@ export function FooterThankYou({ couple }) {
               transition={{ duration: 0.7, delay: 0.45 }}
               className="block whitespace-nowrap"
             >
-              SOME STORIES ARE BETTER
+              LIGHTS. PEOPLE. GOOD TIMES.
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 6 }}
@@ -295,7 +295,7 @@ export function FooterThankYou({ couple }) {
               transition={{ duration: 0.7, delay: 0.52 }}
               className="block whitespace-nowrap"
             >
-              EXPERIENCED TOGETHER.
+              THE CELEBRATIONS BEGIN.
             </motion.span>
           </p>
         </motion.div>
@@ -501,4 +501,4 @@ export function FooterThankYou({ couple }) {
       )}
     </footer>
   );
-}
+});

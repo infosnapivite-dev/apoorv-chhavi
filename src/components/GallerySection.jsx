@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, ChevronDown, Sparkles } from 'lucide-react';
 
-// Default gallery frames (11 portrait photos from /gallery/)
+// Default gallery frames (10 portrait photos from /gallery/)
 const DEFAULT_GALLERY_ITEMS = [
   { id: 1, title: "Frame 01", image: "/gallery/1.webp" },
   { id: 2, title: "Frame 02", image: "/gallery/2.webp" },
@@ -11,13 +11,12 @@ const DEFAULT_GALLERY_ITEMS = [
   { id: 5, title: "Frame 05", image: "/gallery/5.webp" },
   { id: 6, title: "Frame 06", image: "/gallery/6.webp" },
   { id: 7, title: "Frame 07", image: "/gallery/7.webp" },
-  { id: 8, title: "Frame 08", image: "/gallery/8.webp" },
-  { id: 9, title: "Frame 09", image: "/gallery/9.webp" },
-  { id: 10, title: "Frame 10", image: "/gallery/10.webp" },
-  { id: 11, title: "Frame 11", image: "/gallery/11.webp" },
+  { id: 8, title: "Frame 08", image: "/gallery/9.webp" },
+  { id: 9, title: "Frame 09", image: "/gallery/10.webp" },
+  { id: 10, title: "Frame 10", image: "/gallery/11.webp" },
 ];
 
-export function GallerySection({ items = DEFAULT_GALLERY_ITEMS }) {
+export const GallerySection = React.memo(function GallerySection({ items = DEFAULT_GALLERY_ITEMS }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const thumbnailsRef = useRef(null);
 
@@ -128,7 +127,8 @@ export function GallerySection({ items = DEFAULT_GALLERY_ITEMS }) {
                   <img
                     src={currentItem.image}
                     alt={currentItem.title || `Gallery moment ${activeIndex + 1}`}
-                    className="w-full h-full object-cover object-center"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center gpu-accelerated"
                   />
                 ) : (
                   /* Fallback if photo is loading */
@@ -193,7 +193,8 @@ export function GallerySection({ items = DEFAULT_GALLERY_ITEMS }) {
                 <img
                   src={item.image}
                   alt={`Thumbnail ${idx + 1}`}
-                  className="w-full h-full object-cover object-center"
+                  decoding="async"
+                  className="w-full h-full object-cover object-center gpu-accelerated"
                 />
               ) : (
                 <div className="w-full h-full bg-[#180808] flex items-center justify-center border border-[#EBD1A5]/10">
@@ -220,4 +221,4 @@ export function GallerySection({ items = DEFAULT_GALLERY_ITEMS }) {
       </div>
     </section>
   );
-}
+});

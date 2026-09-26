@@ -6,6 +6,7 @@ class BackgroundAudioManager {
     this.audio = null;
     this.isPlaying = true;
     this.isMuted = false;
+    this.wasPlayingBeforeHidden = false;
     this.subscribers = new Set();
     this.hasUserInteracted = false;
     this.init();
@@ -54,6 +55,31 @@ class BackgroundAudioManager {
 
     // Attach first-interaction listener to handle browser autoplay policies
     this.setupInteractionListeners();
+
+    // Attach Page Visibility API listener to auto-pause when tab/app is minimized or in background
+    this.setupVisibilityListener();
+  }
+
+  setupVisibilityListener() {
+    if (typeof document === 'undefined') return;
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        // Tab/app is hidden or minimized: pause if currently playing and remember state
+        if (this.audio && !this.audio.paused && this.isPlaying) {
+          this.wasPlayingBeforeHidden = true;
+          this.pause();
+        } else {
+          this.wasPlayingBeforeHidden = false;
+        }
+      } else {
+        // Tab/app is visible again: resume only if it was playing before leaving
+        if (this.wasPlayingBeforeHidden) {
+          this.play();
+          this.wasPlayingBeforeHidden = false;
+        }
+      }
+    });
   }
 
   setupInteractionListeners() {

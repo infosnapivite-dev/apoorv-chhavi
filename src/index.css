@@ -47,7 +47,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-family: 'Plus Jakarta Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -57,7 +56,6 @@ html {
 body {
   background-color: #35150e;
   color: #2D2424;
-  overflow: hidden;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -233,7 +231,6 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
@@ -263,9 +260,8 @@ body {
 
   body {
     background-color: #2E050B;
-    overflow: hidden;
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .desktop-viewport-container {
@@ -425,3 +421,27 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+/* ==========================================================================
+   HARDWARE ACCELERATION & ANTI-FLICKERING (GPU LAYER PROMOTION)
+   ========================================================================== */
+.gpu-accelerated,
+img,
+video,
+canvas,
+.gallery-card-viewport,
+.gallery-image-frame {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Smooth Scrolling & Overflow Containment */
+.no-layout-shift {
+  contain: layout style paint;
+}
+

@@ -67,18 +67,33 @@ export function EnvelopeGate({ onOpen }) {
       animate={isOpening ? { opacity: 0, scale: 1.04, filter: "blur(6px)" } : { opacity: 1 }}
       transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Background Projector Video in Continuous Loop */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0"
+      {/* Fixed Background Projector Video in Continuous Loop */}
+      <div
+        className="fixed inset-0 w-full h-full pointer-events-none select-none overflow-hidden"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          willChange: 'transform',
+          zIndex: -1,
+        }}
       >
-        <source src="/images/open animation.webm" type="video/webm" />
-        <source src="/images/opening animation.webm" type="video/webm" />
-      </video>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover object-center"
+        >
+          <source src="/images/open animation.webm" type="video/webm" />
+          <source src="/images/opening animation.webm" type="video/webm" />
+        </video>
+      </div>
 
       {/* Cinematic Text & UI Overlay Container */}
       <div className="absolute inset-0 flex flex-col justify-between pt-12 sm:pt-14 pb-10 sm:pb-12 px-6 sm:px-8 z-10 pointer-events-auto">

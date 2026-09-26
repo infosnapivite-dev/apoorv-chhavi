@@ -12,12 +12,16 @@ import { VenueSection } from './components/VenueSection';
 import { FooterThankYou } from './components/FooterThankYou';
 import { FloatingControls } from './components/FloatingControls';
 import { CreamButterflies } from './components/CreamButterflies';
+import { SmoothScroll } from './components/SmoothScroll';
 
 export default function App() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false);
 
   return (
     <div className="desktop-viewport-container">
+      {/* Lenis Buttery Smooth Scroll Engine */}
+      <SmoothScroll isInvitationOpen={isInvitationOpen} />
+
       {/* Realistic iPhone 15 Pro Chassis on Desktop */}
       <IPhoneFrame>
         {/* 1. Opening Animation & The Hook (01 THE HOOK) */}
@@ -38,7 +42,7 @@ export default function App() {
           {/* Floating Audio & Scroll Controls */}
           <FloatingControls isInvitationOpen={isInvitationOpen} />
 
-          <main style={{ position: 'relative', width: '100%', height: '100%', scrollBehavior: 'smooth' }}>
+          <main className="relative w-full min-h-full overflow-x-hidden">
             {/* GSAP Scroll-Triggered Cream Butterflies */}
             <CreamButterflies isInvitationOpen={isInvitationOpen} />
 

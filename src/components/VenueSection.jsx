@@ -24,7 +24,7 @@ function TopFloralDivider({ className = "" }) {
   );
 }
 
-export function VenueSection() {
+export const VenueSection = React.memo(function VenueSection() {
   return (
     <section
       id="credits"
@@ -287,4 +287,4 @@ export function VenueSection() {
       </motion.div>
     </section>
   );
-}
+});

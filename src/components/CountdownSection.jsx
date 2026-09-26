@@ -36,7 +36,7 @@ function PalmTreeIcon({ className = "w-5 h-5 text-[#EBD1A5]/70" }) {
   );
 }
 
-export function CountdownSection({ targetDateISO = '2026-12-09T19:00:00' }) {
+export const CountdownSection = React.memo(function CountdownSection({ targetDateISO = '2026-12-09T19:00:00' }) {
   const [timeLeft, setTimeLeft] = useState({
     days: '00',
     hours: '00',
@@ -102,7 +102,7 @@ export function CountdownSection({ targetDateISO = '2026-12-09T19:00:00' }) {
 
       {/* Main Container */}
       <div className="w-full max-w-sm mx-auto relative my-auto flex flex-col items-center text-center">
-        
+
         {/* Top Emblem & Title Block */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -180,7 +180,7 @@ export function CountdownSection({ targetDateISO = '2026-12-09T19:00:00' }) {
           className="w-full max-w-[340px] min-[380px]:max-w-[355px] sm:max-w-[370px] mx-auto my-4 sm:my-5"
         >
           <div className="relative w-full rounded-[18px] border border-[#EBD1A5]/35 bg-gradient-to-b from-[#1C0408]/95 via-[#140205]/95 to-[#0D0103]/95 shadow-[0_12px_32px_rgba(0,0,0,0.7)] backdrop-blur-md px-1.5 sm:px-3 pt-3 pb-3.5 sm:pt-3.5 sm:pb-4">
-            
+
             {/* Top Palm Tree Icon */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -240,7 +240,7 @@ export function CountdownSection({ targetDateISO = '2026-12-09T19:00:00' }) {
             transition={{ duration: 0.7, delay: 0.88 }}
             className="font-cormorant text-xs sm:text-sm tracking-[0.28em] pl-[0.28em] text-[#EBD1A5]/85 uppercase font-light leading-tight text-center"
           >
-            IS CALLING.
+            IS CALLING
           </motion.p>
         </motion.div>
 
@@ -279,4 +279,4 @@ export function CountdownSection({ targetDateISO = '2026-12-09T19:00:00' }) {
       </motion.div>
     </section>
   );
-}
+});

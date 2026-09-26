@@ -306,7 +306,7 @@ function getEventBannerSrc(event) {
   return event.bannerImage || event.modalImage || '/images/event page top image.webp';
 }
 
-export function EventsSection({ events = weddingData.events }) {
+export const EventsSection = React.memo(function EventsSection({ events = weddingData.events }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
@@ -385,7 +385,7 @@ export function EventsSection({ events = weddingData.events }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.48 }}
-            className="font-cormorant text-[10px] sm:text-[11px] tracking-[0.26em] text-[#EBD1A5]/80 font-light uppercase"
+            className="font-cormorant text-[15px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.26em] text-[#EBD1A5] font-normal sm:font-light uppercase whitespace-nowrap"
           >
             9 • 10 • 11 DECEMBER 2026
           </motion.p>
@@ -761,4 +761,4 @@ export function EventsSection({ events = weddingData.events }) {
       )}
     </section>
   );
-}
+});

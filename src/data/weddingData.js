@@ -269,24 +269,18 @@ export const weddingData = {
     },
     {
       id: 8,
-      title: "JOURNEYS OF THE HEART",
-      quote: "Together is our favorite place to be.",
-      image: "/gallery/8.webp",
-    },
-    {
-      id: 9,
       title: "STOLEN GLANCES",
       quote: "Loved you yesterday, love you still, always have, always will.",
       image: "/gallery/9.webp",
     },
     {
-      id: 10,
+      id: 9,
       title: "THE SACRED PROMISE",
       quote: "Hand in hand, into our forever.",
       image: "/gallery/10.webp",
     },
     {
-      id: 11,
+      id: 10,
       title: "MOMENTS IN TIME",
       quote: "To love and to cherish, from this day forward.",
       image: "/gallery/11.webp",

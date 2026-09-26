@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-export function HeroCouple({ couple }) {
+export const HeroCouple = React.memo(function HeroCouple({ couple }) {
   const smoothEase = [0.22, 1, 0.36, 1];
 
   return (
@@ -211,4 +211,4 @@ export function HeroCouple({ couple }) {
       </motion.div>
     </section>
   );
-}
+});

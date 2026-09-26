@@ -23,7 +23,7 @@ function SketchHeart({ className = "w-4 h-4 text-[#1A0A02]" }) {
   );
 }
 
-export function StoryTimeline() {
+export const StoryTimeline = React.memo(function StoryTimeline() {
   const [activePopup, setActivePopup] = useState(null);
 
   // Keyboard navigation for popup
@@ -434,4 +434,4 @@ export function StoryTimeline() {
       )}
     </section>
   );
-}
+});

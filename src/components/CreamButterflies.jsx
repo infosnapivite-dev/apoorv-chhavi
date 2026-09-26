@@ -146,7 +146,7 @@ function ButterflySvg({ className = "w-8 h-8", style = {} }) {
   );
 }
 
-export function CreamButterflies({ isInvitationOpen }) {
+export const CreamButterflies = React.memo(function CreamButterflies({ isInvitationOpen }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -484,4 +484,4 @@ export function CreamButterflies({ isInvitationOpen }) {
       </div>
     </div>
   );
-}
+});
