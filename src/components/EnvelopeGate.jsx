@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Volume2, VolumeX } from 'lucide-react';
@@ -7,12 +7,45 @@ import { backgroundMusic } from '../utils/audioManager';
 export function EnvelopeGate({ onOpen }) {
   const [isOpening, setIsOpening] = useState(false);
   const [isPlaying, setIsPlaying] = useState(backgroundMusic.isPlaying);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const unsubscribe = backgroundMusic.subscribe(({ isPlaying }) => {
       setIsPlaying(isPlaying);
     });
     return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current || document.getElementById('bg-video');
+    if (video) {
+      video.muted = true;
+      video.play().catch((err) => {
+        console.warn('Video autoplay attempt:', err);
+      });
+
+      const onVideoPlaying = () => {
+        if (backgroundMusic && backgroundMusic.audio) {
+          backgroundMusic.audio.play().then(() => {
+            backgroundMusic.isPlaying = true;
+            backgroundMusic.notify();
+          }).catch((error) => {
+            console.log("Audio autoplay blocked by browser. User interaction needed.", error);
+            backgroundMusic.isPlaying = false;
+            backgroundMusic.notify();
+          });
+        }
+      };
+
+      video.addEventListener('playing', onVideoPlaying);
+      if (!video.paused && video.readyState >= 2) {
+        onVideoPlaying();
+      }
+
+      return () => {
+        video.removeEventListener('playing', onVideoPlaying);
+      };
+    }
   }, []);
 
   const handleOpenClick = () => {
@@ -83,6 +116,8 @@ export function EnvelopeGate({ onOpen }) {
         }}
       >
         <video
+          ref={videoRef}
+          id="bg-video"
           autoPlay
           loop
           muted

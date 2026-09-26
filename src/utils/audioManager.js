@@ -17,6 +17,7 @@ class BackgroundAudioManager {
 
     if (!this.audio) {
       this.audio = new Audio();
+      this.audio.id = 'bg-audio';
       this.audio.src = '/background-music.mp3';
       this.audio.loop = true;
       this.audio.preload = 'auto';
@@ -50,14 +51,45 @@ class BackgroundAudioManager {
       });
     }
 
-    // Try starting playback immediately
-    this.attemptAutoplay();
+    // Sync audio playback to background video playing event
+    this.setupVideoSync();
 
     // Attach first-interaction listener to handle browser autoplay policies
     this.setupInteractionListeners();
 
     // Attach Page Visibility API listener to auto-pause when tab/app is minimized or in background
     this.setupVisibilityListener();
+  }
+
+  setupVideoSync() {
+    if (typeof document === 'undefined') return;
+
+    const bindVideo = () => {
+      const video = document.getElementById('bg-video');
+      const audio = this.audio || document.getElementById('bg-audio');
+
+      if (video && audio) {
+        // When the video successfully starts playing (allowed because it is muted)
+        video.addEventListener('playing', () => {
+          // Attempt to play the audio
+          audio.play().then(() => {
+            this.isPlaying = true;
+            this.notify();
+          }).catch(error => {
+            console.log("Audio autoplay blocked by browser. User interaction needed.", error);
+            // Show the Play/Pause UI button state so the user can manually start the music
+            this.isPlaying = false;
+            this.notify();
+          });
+        });
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindVideo);
+    } else {
+      bindVideo();
+    }
   }
 
   setupVisibilityListener() {
