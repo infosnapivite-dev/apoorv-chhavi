@@ -93,7 +93,6 @@ export function MomentsSlider({ moments }) {
                 src={currentMoment.image}
                 alt={currentMoment.caption}
                 className="w-full h-full object-cover object-center filter contrast-[1.05] brightness-[0.95]"
-                loading="lazy"
               />
 
               {/* Dark Vignettes */}

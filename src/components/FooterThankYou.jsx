@@ -3,8 +3,27 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MessageCircle, Copy, Check } from 'lucide-react';
 
-// Hand-Drawn Minimalist Gold Heart SVG
-function HandDrawnHeart({ className = "w-5 h-5 text-[#EBD1A5]" }) {
+// Minimalist Instagram Icon SVG
+function InstagramIcon({ className = "w-2.5 h-2.5 text-current" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+// Hand-Drawn Minimalist Gold Heart SVG matching PDF reference
+function HandDrawnHeart({ className = "w-6 h-6 text-[#EBD1A5]" }) {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -12,14 +31,14 @@ function HandDrawnHeart({ className = "w-5 h-5 text-[#EBD1A5]" }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       stroke="currentColor"
-      strokeWidth="2.5"
+      strokeWidth="2.8"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
       <path
         d="M50 82 C45 78 18 55 18 35 C18 22 28 14 40 16 C46 17 49 22 50 25 C51 22 54 17 60 16 C72 14 82 22 82 35 C82 55 55 78 50 82 Z"
         stroke="currentColor"
-        strokeOpacity="0.85"
+        strokeOpacity="0.9"
       />
     </svg>
   );
@@ -46,12 +65,12 @@ function RealisticTheatricalSpotlight() {
         className="relative z-30 flex flex-col items-center"
       >
         {/* Top Ceiling Mount Cord */}
-        <div className="w-[3px] h-2.5 bg-gradient-to-b from-[#1C1208] via-[#5A3F1F] to-[#2B1B0A]" />
+        <div className="w-[3.5px] h-3.5 bg-gradient-to-b from-[#1C1208] via-[#5A3F1F] to-[#2B1B0A]" />
         
         {/* Realistic SVG Vintage Industrial Lamp */}
         <svg
           viewBox="0 0 140 85"
-          className="w-20 sm:w-24 h-auto drop-shadow-[0_8px_20px_rgba(0,0,0,0.95)] overflow-visible"
+          className="w-[124px] sm:w-[106px] h-auto drop-shadow-[0_8px_20px_rgba(0,0,0,0.95)] overflow-visible"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -108,23 +127,23 @@ function RealisticTheatricalSpotlight() {
           {/* Main Lampshade Body */}
           <path d="M40 56 C38 28 52 14 70 14 C88 14 102 28 100 56 Z" fill="url(#metalHousing)" stroke="#261708" strokeWidth="1.2" />
 
-          {/* Metallic Highlights & Shadow Ribs */}
+          {/* Metallic Highlights */}
           <path d="M46 54 C46 32 56 20 70 20" stroke="#FFEBB5" strokeWidth="0.9" strokeOpacity="0.45" />
           <path d="M94 54 C94 32 84 20 70 20" stroke="#1A0D03" strokeWidth="1.2" strokeOpacity="0.7" />
 
-          {/* Inner Reflector Parabolic Dish */}
+          {/* Inner Reflector Dish */}
           <ellipse cx="70" cy="56" rx="30" ry="9" fill="url(#reflectorDish)" stroke="#523512" strokeWidth="1" />
 
           {/* Outer Bezel Rim */}
           <ellipse cx="70" cy="56" rx="31" ry="8" fill="none" stroke="url(#bezelRing)" strokeWidth="2.4" />
 
-          {/* Tungsten Bulb Socket */}
+          {/* Bulb Socket */}
           <rect x="66" y="47" width="8" height="5" fill="#422910" rx="1" />
 
           {/* Incandescent Glass Bulb with Glowing Core */}
           <circle cx="70" cy="55" r="9" fill="url(#bulbCore)" />
           
-          {/* Tungsten Filament Hot Wire */}
+          {/* Tungsten Filament */}
           <path d="M67 52 Q70 48 73 52" stroke="#FFFFFF" strokeWidth="1.2" strokeLinecap="round" />
           <line x1="68" y1="52" x2="68" y2="55" stroke="#FFE9A3" strokeWidth="0.8" />
           <line x1="72" y1="52" x2="72" y2="55" stroke="#FFE9A3" strokeWidth="0.8" />
@@ -137,7 +156,7 @@ function RealisticTheatricalSpotlight() {
             opacity: [0.85, 1, 0.9, 1, 0.85]
           }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[38px] w-10 h-10 rounded-full pointer-events-none"
+          className="absolute top-[48px] left-1/2 -translate-x-1/2 w-16 h-16 rounded-full pointer-events-none"
           style={{
             background: 'radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,215,115,0.7) 35%, rgba(255,160,30,0.3) 65%, rgba(0,0,0,0) 100%)',
             filter: 'blur(3px)'
@@ -145,16 +164,16 @@ function RealisticTheatricalSpotlight() {
         />
       </motion.div>
 
-      {/* Downward Volumetric Atmospheric Light Beam */}
+      {/* Downward Volumetric Light Beam */}
       <motion.div
         animate={{
           opacity: [0.85, 1, 0.88, 1, 0.85]
         }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-8 w-[260px] sm:w-[300px] h-[260px] pointer-events-none"
+        className="absolute top-[56px] sm:top-[50px] left-1/2 -translate-x-1/2 w-[310px] sm:w-[300px] h-[300px] sm:h-[280px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(255, 222, 150, 0.35) 0%, rgba(255, 185, 75, 0.16) 38%, rgba(26, 3, 7, 0) 75%)',
-          clipPath: 'polygon(37% 0%, 63% 0%, 100% 100%, 0% 100%)',
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(255, 222, 150, 0.38) 0%, rgba(255, 185, 75, 0.18) 42%, rgba(26, 3, 7, 0) 78%)',
+          clipPath: 'polygon(42% 0%, 58% 0%, 100% 100%, 0% 100%)',
           filter: 'blur(3px)'
         }}
       >
@@ -210,134 +229,175 @@ export function FooterThankYou({ couple }) {
   };
 
   const handleWhatsAppShare = () => {
-    const text = `💍 You're warmly invited to the Wedding Premiere of ${couple?.groom?.shortName || 'Sahil'} & ${couple?.bride?.shortName || 'Riya'}! View our official invitation here: ${window.location.href}`;
+    const text = `💍 You're warmly invited to the Wedding Premiere of Apoorv & Chhavi in Goa! 9.10.11 December 2026. View our official invitation here: ${window.location.href}`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
     <footer
       id="premiere"
-      className="relative min-h-full w-full flex flex-col justify-between pt-8 sm:pt-10 pb-12 sm:pb-14 px-4 sm:px-6 bg-transparent text-[#EBD1A5] select-none overflow-hidden"
+      className="relative min-h-[110vh] sm:min-h-full w-full flex flex-col justify-between pt-10 sm:pt-10 pb-8 sm:pb-5 px-4 sm:px-6 bg-transparent text-[#EBD1A5] select-none overflow-hidden"
     >
-      {/* Top Bar Header: "08 THE PREMIERE" - Left Aligned with Bottom Padding */}
+      {/* Top Bar Header: "7 THE PREMIERE" */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-        className="flex items-center justify-start w-full max-w-sm mx-auto pb-2 sm:pb-3"
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="flex items-center justify-start w-full max-w-sm mx-auto pb-2 sm:pb-3 mb-1"
       >
         <div className="flex items-center gap-1.5">
-          <span className="font-cormorant text-2xl sm:text-3xl text-[#EBD1A5] font-normal tracking-normal leading-none whitespace-nowrap">
-            08
+          <span className="font-cormorant text-3xl sm:text-3xl text-[#EBD1A5] font-normal tracking-normal leading-none whitespace-nowrap">
+            7
           </span>
-          <span className="font-cormorant text-[10px] sm:text-[11px] tracking-[0.24em] text-[#EBD1A5]/90 font-normal uppercase ml-1 whitespace-nowrap">
+          <span className="font-cormorant text-[14px] sm:text-[11px] tracking-[0.24em] text-[#EBD1A5]/90 font-normal uppercase ml-1 whitespace-nowrap">
             THE PREMIERE
           </span>
         </div>
       </motion.div>
 
-      {/* Main Container - Centered and Vertically Optimized */}
-      <div className="w-full max-w-sm mx-auto relative my-auto flex flex-col items-center text-center">
+      {/* Main Container */}
+      <div className="w-full max-w-sm mx-auto relative my-auto flex flex-col items-center justify-center text-center">
         
-        {/* Realistic Animated Theatrical Spotlight Lamp */}
-        <RealisticTheatricalSpotlight />
-
-        {/* Spotlighted Quote Typography */}
+        {/* Theatrical Spotlight Lamp */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.85, delay: 0.35, ease: "easeOut" }}
-          className="space-y-0.5 mt-1 sm:mt-1.5 relative z-10"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 1.0, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full flex justify-center"
         >
-          <p className="font-cormorant text-[10.5px] sm:text-[11.5px] tracking-[0.28em] text-[#EBD1A5]/90 uppercase font-light leading-relaxed">
-            SOME STORIES
-          </p>
-          <p className="font-cormorant text-[10.5px] sm:text-[11.5px] tracking-[0.28em] text-[#EBD1A5]/90 uppercase font-light leading-relaxed">
-            ARE BETTER
-          </p>
-          <p className="font-cormorant text-[10.5px] sm:text-[11.5px] tracking-[0.28em] text-[#EBD1A5]/90 uppercase font-light leading-relaxed">
-            EXPERIENCED
-          </p>
-          <p className="font-cormorant text-[10.5px] sm:text-[11.5px] tracking-[0.28em] text-[#EBD1A5]/90 uppercase font-light leading-relaxed">
-            TOGETHER.
+          <RealisticTheatricalSpotlight />
+        </motion.div>
+
+        {/* Spotlighted Quote Typography (Exact text matching client reference) */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 sm:mt-7 relative z-10 w-full text-center flex flex-col items-center justify-center"
+        >
+          <p className="font-cormorant text-[14px] sm:text-[9px] tracking-[0.16em] text-[#EBD1A5]/90 uppercase font-light leading-[1.6] text-center">
+            <motion.span
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.45 }}
+              className="block whitespace-nowrap"
+            >
+              SOME STORIES ARE BETTER
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 6 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.52 }}
+              className="block whitespace-nowrap"
+            >
+              EXPERIENCED TOGETHER.
+            </motion.span>
           </p>
         </motion.div>
 
-        {/* Thin Gold Line Divider */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.55 }}
-          className="w-12 h-[1px] bg-[#EBD1A5]/40 mx-auto my-2 sm:my-2.5 relative z-10"
-        />
-
         {/* Main Grand Headline: "SEE YOU AT THE PREMIERE." */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, delay: 0.65, ease: "easeOut" }}
-          className="space-y-0.5 relative z-10 my-0.5"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.9, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 sm:mt-4 mb-0.5 relative z-10 w-full text-center flex flex-col items-center justify-center"
         >
-          <h2 className="font-cormorant text-2xl sm:text-3xl md:text-[32px] tracking-[0.22em] text-[#EBD1A5] font-normal uppercase leading-[1.2]">
-            SEE YOU AT
-          </h2>
-          <h2 className="font-cormorant text-2xl sm:text-3xl md:text-[32px] tracking-[0.22em] text-[#EBD1A5] font-normal uppercase leading-[1.2]">
-            THE PREMIERE.
+          <h2 className="font-cormorant text-[22px] sm:text-[15px] md:text-[16px] tracking-[0.18em] text-[#EBD1A5] font-normal uppercase leading-[1.3] text-center">
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, delay: 0.65 }}
+              className="block whitespace-nowrap"
+            >
+              SEE YOU AT
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, delay: 0.73 }}
+              className="block whitespace-nowrap"
+            >
+              THE PREMIERE.
+            </motion.span>
           </h2>
         </motion.div>
 
         {/* Hand-Drawn Heart Icon */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.7 }}
+          initial={{ opacity: 0, scale: 0.6 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.85, type: "spring", stiffness: 200 }}
-          className="my-2 sm:my-2.5 flex justify-center relative z-10"
+          transition={{ duration: 0.8, delay: 0.82, type: "spring", stiffness: 220 }}
+          className="my-3.5 sm:my-3 flex items-center justify-center mx-auto relative z-10"
         >
-          <HandDrawnHeart className="w-5 h-5 text-[#EBD1A5]" />
+          <HandDrawnHeart className="w-5 h-5 sm:w-4 sm:h-4 text-[#EBD1A5]" />
         </motion.div>
 
-        {/* Couple Monogram & Wedding Date */}
+        {/* Couple & Date & GOA */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.85, delay: 1, ease: "easeOut" }}
-          className="space-y-0.5 relative z-10"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.85, delay: 0.92, ease: [0.22, 1, 0.36, 1] }}
+          className="space-y-1.5 relative z-10 w-full text-center flex flex-col items-center justify-center"
         >
-          <h3 className="font-cormorant text-sm sm:text-base tracking-[0.28em] text-[#EBD1A5] font-normal uppercase leading-none">
-            RIYA &nbsp;×&nbsp; SAHIL
-          </h3>
+          <motion.h3
+            initial={{ opacity: 0, y: 6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.95 }}
+            className="font-cormorant text-[17px] sm:text-[11px] tracking-[0.22em] text-[#EBD1A5] font-normal uppercase leading-none text-center whitespace-nowrap"
+          >
+            APOORV &amp; CHHAVI
+          </motion.h3>
 
-          <p className="font-cormorant text-xs sm:text-[12.5px] tracking-[0.26em] text-[#EBD1A5]/80 font-light uppercase leading-none pt-0.5">
-            28.11.2026
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 6 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 1.02 }}
+            className="font-cormorant text-[13.5px] sm:text-[9px] tracking-[0.20em] text-[#EBD1A5]/85 font-light uppercase leading-none text-center pt-0.5 whitespace-nowrap"
+          >
+            9 • 10 • 11 DECEMBER 2026
+          </motion.p>
+
+          <motion.h4
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, delay: 1.08 }}
+            className="font-cormorant text-[21px] sm:text-sm tracking-[0.28em] text-[#EBD1A5] font-light uppercase leading-tight text-center pt-0.5 whitespace-nowrap"
+          >
+            GOA
+          </motion.h4>
         </motion.div>
 
-        {/* 2 Underlined Action Links: "SHARE INVITATION" & "REPLAY THE STORY" - Stacked in 2 Centered Rows */}
+        {/* 2 Underlined Action Links: "SHARE INVITATION" & "REPLAY THE STORY" */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.85, delay: 1.15, ease: "easeOut" }}
-          className="flex flex-col items-center justify-center gap-2.5 w-full mx-auto pt-4 sm:pt-5 text-[10px] sm:text-[11px] font-cormorant tracking-[0.2em] uppercase relative z-20"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.85, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col items-center justify-center gap-2.5 w-full mx-auto mt-5 sm:mt-5 text-[13.5px] sm:text-[8.5px] font-cormorant tracking-[0.20em] uppercase relative z-20"
         >
-          {/* Row 1: SHARE INVITATION */}
           <button
             onClick={() => setIsShareModalOpen(true)}
-            className="pb-0.5 border-b border-[#EBD1A5]/60 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
+            className="pb-0.5 border-b border-[#EBD1A5]/50 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
           >
             SHARE INVITATION
           </button>
 
-          {/* Row 2: REPLAY THE STORY */}
           <button
             onClick={handleReplayStory}
-            className="pb-0.5 border-b border-[#EBD1A5]/60 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
+            className="pb-0.5 border-b border-[#EBD1A5]/50 hover:border-gold-300 text-[#EBD1A5] hover:text-gold-300 font-medium transition-all cursor-pointer whitespace-nowrap active:scale-95 text-center"
           >
             REPLAY THE STORY
           </button>
@@ -345,17 +405,24 @@ export function FooterThankYou({ couple }) {
 
       </div>
 
-      {/* Footer Branding: "SNAPIVITE" - Fixed with clearance */}
+      {/* Footer Branding: "SNAPIVITE" (Clickable Instagram Link with Minimal Logo) */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.9, delay: 1.3 }}
-        className="text-center pt-2 pb-1 relative z-10"
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.9, delay: 1.28, ease: [0.22, 1, 0.36, 1] }}
+        className="text-center pt-7 sm:pt-7 pb-2 relative z-20 w-full flex items-center justify-center"
       >
-        <p className="font-cormorant text-[8.5px] sm:text-[9.5px] tracking-[0.32em] text-[#EBD1A5]/50 uppercase font-light">
-          SNAPIVITE
-        </p>
+        <a
+          href="https://www.instagram.com/snapivite/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center justify-center gap-1.5 font-cormorant text-[11px] sm:text-[8px] tracking-[0.32em] pl-[0.32em] text-[#EBD1A5]/50 hover:text-[#EBD1A5] uppercase font-light text-center transition-colors cursor-pointer active:scale-95"
+          title="Visit Snapivite on Instagram"
+        >
+          <InstagramIcon className="w-3.5 h-3.5 sm:w-2.5 sm:h-2.5 text-[#EBD1A5]/60 group-hover:text-[#EBD1A5] transition-colors" />
+          <span>SNAPIVITE</span>
+        </a>
       </motion.div>
 
       {/* Share Modal Portal */}
@@ -392,7 +459,7 @@ export function FooterThankYou({ couple }) {
                     Share The Joy
                   </h3>
                   <p className="font-sans text-xs text-slate-300">
-                    Invite your friends and loved ones to celebrate with Riya & Sahil.
+                    Invite your friends and loved ones to celebrate with Apoorv & Chhavi.
                   </p>
                 </div>
 
@@ -424,7 +491,7 @@ export function FooterThankYou({ couple }) {
                 </div>
 
                 <p className="font-cormorant text-xs text-[#EBD1A5]/70 italic">
-                  #RiyaSahilWedding • 28 November 2026
+                  #ApoorvedByChhavi • 9.10.11 December 2026 Goa
                 </p>
               </motion.div>
             </motion.div>

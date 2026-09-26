@@ -3,16 +3,23 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, X } from 'lucide-react';
 
-// Realistic Washi / Scotch Tape Component
-function WashiTape({ className = "", style = {} }) {
+// Hand-Drawn Sketch Heart matching reference image
+function SketchHeart({ className = "w-4 h-4 text-[#1A0A02]" }) {
   return (
-    <div
-      className={`absolute z-20 pointer-events-none bg-[#f3e6c8]/65 backdrop-blur-[1px] border-t border-b border-white/40 shadow-xs ${className}`}
-      style={{
-        boxShadow: '0 1px 3px rgba(0,0,0,0.18)',
-        ...style
-      }}
-    />
+    <svg
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M16 26.5 C14.2 24.8 5.5 17.5 5.5 11 C5.5 7.2 8.2 4.5 12 5.2 C14.3 5.6 15.4 7.4 16 8.8 C16.6 7.4 17.7 5.6 20 5.2 C23.8 4.5 26.5 7.2 26.5 11 C26.5 17.5 17.8 24.8 16 26.5 Z"
+        stroke="currentColor"
+        strokeWidth="2.0"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
@@ -37,260 +44,274 @@ export function StoryTimeline() {
   return (
     <section
       id="story"
-      className="relative min-h-full w-full flex flex-col justify-between pt-9 sm:pt-11 pb-7 px-3.5 sm:px-5 bg-transparent text-[#EBD1A5] select-none overflow-hidden"
+      className="relative min-h-full w-full flex flex-col justify-between pt-8 sm:pt-10 pb-7 px-4 sm:px-6 bg-transparent text-[#EBD1A5] select-none overflow-hidden"
     >
-      {/* Top Bar Header: "03 THE STORY" - Left Aligned with Bottom Padding */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-        className="flex items-center justify-start w-full max-w-sm mx-auto pb-3 sm:pb-4 mb-2"
+      {/* SVG Definitions for Realistic Deckled / Torn Paper Borders */}
+      <svg
+        width="0"
+        height="0"
+        className="absolute w-0 h-0 pointer-events-none opacity-0"
+        aria-hidden="true"
+        style={{ position: 'absolute', width: 0, height: 0 }}
       >
-        <div className="flex items-center gap-1.5">
-          <span className="font-cormorant text-2xl sm:text-3xl text-[#EBD1A5] font-normal tracking-normal leading-none whitespace-nowrap">
+        <defs>
+          <filter id="torn-deckled-edge" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.065" numOctaves="4" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Top Bar Header: "03 THE STORY" */}
+      <motion.div
+        initial={{ opacity: 0, y: -14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="flex items-center justify-start w-full max-w-[340px] sm:max-w-[360px] mx-auto pb-2 sm:pb-3 mb-1"
+      >
+        <div className="flex items-center gap-2">
+          <span className="font-cormorant text-3xl sm:text-4xl text-[#EBD1A5] font-normal tracking-normal leading-none whitespace-nowrap">
             03
           </span>
-          <span className="font-cormorant text-[10px] sm:text-[11px] tracking-[0.24em] text-[#EBD1A5]/90 font-normal uppercase ml-1 whitespace-nowrap">
+          <span className="font-cormorant text-[11px] sm:text-xs tracking-[0.26em] text-[#EBD1A5]/90 font-normal uppercase ml-1 whitespace-nowrap">
             THE STORY
           </span>
         </div>
       </motion.div>
 
       {/* Main Vintage Scrapbook / Polaroid Collage Grid */}
-      <div className="w-full max-w-sm mx-auto relative my-auto py-2 space-y-3.5">
+      <div className="w-full max-w-[340px] sm:max-w-[360px] mx-auto relative my-auto py-1">
         
-        {/* ROW 1: Top Left Beach Polaroid + Top Right Coffee Photo & Movie Ticket */}
-        <div className="grid grid-cols-12 gap-2.5 items-start">
+        {/* ROW 1: Top Left Polaroid + Top Right Polaroid */}
+        <div className="flex items-start justify-between relative z-10 w-full">
           
-          {/* 1. Top Left: Beach Trip Polaroid */}
+          {/* 1. Top Left: "The first hello / Somewhere in time" Polaroid */}
           <motion.div
-            initial={{ opacity: 0, y: 20, rotate: -4 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -2.5 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 24, rotate: -7, scale: 0.94 }}
+            whileInView={{ opacity: 1, y: 0, rotate: -4.5, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             onClick={() => openImage({
-              image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85",
+              image: "/images/first hello.webp",
+              title: "The first hello",
+              subtitle: "Somewhere in time",
+              caption: "The first hello. Somewhere in time."
+            })}
+            style={{
+              background: 'linear-gradient(145deg, #F5E8D2 0%, #ECD7B7 40%, #DFCA9F 100%)',
+              boxShadow: '0 10px 24px -3px rgba(0,0,0,0.65), 0 3px 8px rgba(0,0,0,0.35), inset 0 0 16px rgba(110, 75, 20, 0.18)',
+            }}
+            className="w-[50%] p-2 pb-3 rounded-[2px] border border-[#BFA882]/60 cursor-pointer transform hover:rotate-0 hover:scale-105 transition-all duration-300 group select-none shrink-0"
+          >
+            {/* Photo Container */}
+            <div className="aspect-[4/3.4] w-full overflow-hidden bg-black/60 shadow-inner border border-[#9A7D58]/30">
+              <img
+                src="/images/first hello.webp"
+                alt="The first hello"
+                className="w-full h-full object-cover filter contrast-[1.04] brightness-[0.98] group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Handwritten Text - Razor-Sharp Vector Font Rendering */}
+            <div className="text-center pt-2 pb-0.5 leading-tight space-y-0.5">
+              <p className="font-caveat text-[15.5px] sm:text-[16.5px] font-bold leading-none tracking-tight text-[#1A0A02]">
+                The first hello
+              </p>
+              <p className="font-caveat text-[13.5px] sm:text-[14.5px] font-bold text-[#2A1408] leading-none">
+                Somewhere in time
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 2. Top Right: "First Movie" Polaroid */}
+          <motion.div
+            initial={{ opacity: 0, y: 24, rotate: 7, scale: 0.94 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 3.5, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            onClick={() => openImage({
+              image: "/images/first movie.webp",
+              title: "First Movie",
+              subtitle: "",
+              caption: "First movie together and unforgettable smiles."
+            })}
+            style={{
+              background: 'linear-gradient(145deg, #F5E8D2 0%, #ECD7B7 40%, #DFCA9F 100%)',
+              boxShadow: '0 10px 24px -3px rgba(0,0,0,0.65), 0 3px 8px rgba(0,0,0,0.35), inset 0 0 16px rgba(110, 75, 20, 0.18)',
+            }}
+            className="w-[47%] p-2 pb-3.5 rounded-[2px] border border-[#BFA882]/60 cursor-pointer transform hover:rotate-0 hover:scale-105 transition-all duration-300 group select-none shrink-0 -ml-1 mt-1"
+          >
+            {/* Photo Container */}
+            <div className="aspect-[4/3.3] w-full overflow-hidden bg-black/60 shadow-inner border border-[#9A7D58]/30">
+              <img
+                src="/images/first movie.webp"
+                alt="First Movie"
+                className="w-full h-full object-cover filter contrast-[1.04] brightness-[0.98] group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Handwritten Text - Razor-Sharp Vector Font Rendering */}
+            <div className="text-center pt-2.5 pb-0.5">
+              <p className="font-caveat text-[16.5px] sm:text-[17.5px] font-bold leading-none tracking-tight text-[#1A0A02]">
+                First Movie
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ROW 2: Middle Section (Wide Landscape Polaroid + Torn Deckled Parchment Note on Right) */}
+        <div className="relative w-full -mt-[7px] z-20 flex items-center">
+          
+          {/* 3. Middle Wide Polaroid: The First Trip Lake View */}
+          <motion.div
+            initial={{ opacity: 0, x: -24, rotate: -8, scale: 0.94 }}
+            whileInView={{ opacity: 1, x: 0, rotate: -5.8, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.95, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            onClick={() => openImage({
+              image: "/images/first trip.webp",
               title: "The first trip",
-              date: "July '18",
-              caption: "Our unforgettable first getaway listening to the waves."
+              subtitle: "Exploring new horizons",
+              caption: "The first trip. Exploring new horizons."
             })}
-            className="col-span-6 relative bg-[#E9DAC1] p-2 pb-3 rounded-xs shadow-xl border border-[#CBB89B] transform hover:rotate-0 hover:scale-105 transition-all duration-300 cursor-pointer group"
+            style={{
+              background: 'linear-gradient(145deg, #F5E8D2 0%, #ECD7B7 40%, #DFCA9F 100%)',
+              boxShadow: '0 12px 28px -4px rgba(0,0,0,0.7), 0 4px 10px rgba(0,0,0,0.4), inset 0 0 16px rgba(110, 75, 20, 0.18)',
+            }}
+            className="w-[calc(68%-9px)] p-2 pb-2 rounded-[2px] border border-[#BFA882]/60 cursor-pointer transform hover:rotate-0 hover:scale-105 transition-all duration-300 group select-none relative z-20"
           >
-            <WashiTape className="w-10 h-3.5 -top-2 -left-2 rotate-[-35deg]" />
-
-            <div className="aspect-[4/3.5] w-full overflow-hidden bg-black/40 border border-[#bfa98b]/40 relative">
+            <div className="aspect-[16/11.5] w-full overflow-hidden bg-black/60 shadow-inner border border-[#9A7D58]/30">
               <img
-                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+                src="/images/first trip.webp"
                 alt="The first trip"
-                className="w-full h-full object-cover filter sepia-[0.35] contrast-[1.05] brightness-[0.92] group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
+                className="w-full h-full object-cover filter contrast-[1.04] brightness-[0.98] group-hover:scale-105 transition-transform duration-500"
               />
-            </div>
-
-            <div className="text-center pt-2 pb-0.5 text-[#2C1810]">
-              <p className="font-caveat text-sm sm:text-base font-bold leading-tight">
-                The first trip
-              </p>
-              <p className="font-caveat text-xs sm:text-sm text-[#4A2E20] leading-none mt-0.5">
-                July '18
-              </p>
             </div>
           </motion.div>
 
-          {/* Top Right Column: Coffee Cup Photo + Movie Ticket */}
-          <div className="col-span-6 space-y-2.5">
+          {/* 4. Middle Right Hand-Torn Deckled Parchment Note: "The first trip / Exploring / new horizons / ♡" */}
+          <motion.div
+            initial={{ opacity: 0, x: 24, rotate: 6, scale: 0.92 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 2, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.95, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            onClick={() => openImage({
+              image: "/images/first trip.webp",
+              title: "The first trip",
+              subtitle: "Exploring new horizons",
+              caption: "The first trip. Exploring new horizons."
+            })}
+            style={{
+              filter: 'drop-shadow(0 10px 22px rgba(0,0,0,0.65)) drop-shadow(0 2px 6px rgba(0,0,0,0.4))',
+            }}
+            className="w-[41%] p-3 py-4 text-center flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300 absolute right-0 top-[5%] z-10 select-none relative"
+          >
+            {/* Background layer with torn deckled edge filter (separated from text for 100% crisp sharpness) */}
+            <div
+              className="absolute inset-0 pointer-events-none rounded-[1px]"
+              style={{
+                filter: 'url(#torn-deckled-edge)',
+                background: 'linear-gradient(135deg, #F5E9D2 0%, #E8D3B0 45%, #D6BB90 100%)',
+              }}
+            />
+
+            {/* Inner edge burn shading */}
+            <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_14px_rgba(105,68,18,0.22)]" />
             
-            {/* 2. Coffee Photo Frame */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, rotate: 3 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 1.5 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-              onClick={() => openImage({
-                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=85",
-                title: "First Coffee Date",
-                date: "Winter 2016",
-                caption: "Two warm cups, infinite conversations, and the beginning of us."
-              })}
-              className="relative bg-[#E9DAC1] p-1.5 pb-2 rounded-xs shadow-lg border border-[#CBB89B] hover:scale-105 transition-all duration-300 cursor-pointer group"
-            >
-              <WashiTape className="w-8 h-3 -top-1.5 -right-1 rotate-[25deg]" />
-
-              <div className="aspect-[4/3] w-full overflow-hidden bg-black/40 border border-[#bfa98b]/40 relative">
-                <img
-                  src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
-                  alt="First Coffee"
-                  className="w-full h-full object-cover filter sepia-[0.4] contrast-[1.1] brightness-[0.9] group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-            </motion.div>
-
-            {/* 3. Vintage Movie Ticket */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              onClick={() => openImage({
-                image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=85",
-                title: "First Movie Night",
-                date: "24.11.16",
-                caption: "Late night show, shared popcorn, and endless smiles."
-              })}
-              className="relative bg-[#D9C4A2] text-[#2C1810] p-2 rounded-xs shadow-md border-2 border-dashed border-[#8A6D4B]/50 flex items-center justify-between cursor-pointer hover:scale-105 transition-transform"
-            >
-              <WashiTape className="w-6 h-3 -top-1.5 left-1/2 -translate-x-1/2 rotate-[-2deg]" />
-              <WashiTape className="w-4 h-3.5 -bottom-1.5 right-1 rotate-[45deg]" />
-
-              <div className="text-[7px] font-mono tracking-tighter text-[#4A2E20]/80 rotate-[-90deg] -ml-2">
-                *823356
-              </div>
-
-              <div className="text-center flex-1 py-0.5">
-                <p className="font-sans text-[8px] font-bold uppercase tracking-[0.2em] text-[#3D2518]">
-                  ADMIT ONE
-                </p>
-                <p className="font-playfair text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#24120A] mt-0.5">
-                  FIRST MOVIE
-                </p>
-                <p className="font-mono text-[8px] tracking-[0.18em] text-[#4A2E20] mt-0.5 font-semibold">
-                  24 . . 11 . . 16
-                </p>
-              </div>
-
-              <div className="text-[7px] font-mono tracking-tighter text-[#4A2E20]/80 rotate-90 -mr-2">
-                *823356
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-
-        {/* ROW 2: Middle Left Wide Polaroid + Middle Right Note */}
-        <div className="grid grid-cols-12 gap-2.5 items-center">
-          
-          {/* 4. Wide Landscape Polaroid */}
-          <motion.div
-            initial={{ opacity: 0, x: -20, rotate: -1.5 }}
-            whileInView={{ opacity: 1, x: 0, rotate: -0.5 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.85, delay: 0.75, ease: "easeOut" }}
-            onClick={() => openImage({
-              image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=85",
-              title: "The First Picture",
-              date: "02.06.17",
-              caption: "The moment our story silently began."
-            })}
-            className="col-span-7 relative bg-[#E9DAC1] p-2 rounded-xs shadow-xl border border-[#CBB89B] hover:scale-105 transition-all duration-300 cursor-pointer group"
-          >
-            <WashiTape className="w-12 h-3.5 -top-1.5 left-1/3 rotate-[-3deg]" />
-            <WashiTape className="w-9 h-3.5 -bottom-2 -left-1 rotate-[20deg]" />
-
-            <div className="aspect-[16/11] w-full overflow-hidden bg-black/40 border border-[#bfa98b]/40 relative">
-              <img
-                src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80"
-                alt="Riya & Sahil together"
-                className="w-full h-full object-cover filter sepia-[0.35] contrast-[1.08] brightness-[0.93] group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
+            {/* 100% Crisp & Sharp Handwritten Text */}
+            <p className="font-caveat text-[15.5px] sm:text-[17px] font-bold leading-tight tracking-tight text-[#1A0A02] relative z-10">
+              The first trip
+            </p>
+            <p className="font-caveat text-[14.5px] sm:text-[15.5px] font-bold leading-tight text-[#2A1408] relative z-10">
+              Exploring
+            </p>
+            <p className="font-caveat text-[14.5px] sm:text-[15.5px] font-bold leading-tight text-[#2A1408] relative z-10">
+              new horizons
+            </p>
+            <div className="mt-1 flex justify-center relative z-10">
+              <SketchHeart className="w-4 h-4 text-[#1A0A02]" />
             </div>
-          </motion.div>
-
-          {/* 5. Kraft Paper Note: "The first picture 02.06.17 ♡" */}
-          <motion.div
-            initial={{ opacity: 0, x: 20, rotate: 4 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 2 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.85, delay: 0.9, ease: "easeOut" }}
-            onClick={() => openImage({
-              image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=85",
-              title: "The First Picture",
-              date: "June 2, 2017",
-              caption: "A quiet moment that started our journey."
-            })}
-            className="col-span-5 relative bg-[#DEC7A6] p-3 py-4 rounded-xs shadow-md border border-[#BFA785] text-[#2C1810] text-center flex flex-col justify-center cursor-pointer hover:scale-105 transition-transform"
-          >
-            <WashiTape className="w-8 h-3.5 -bottom-2 right-1 rotate-[45deg]" />
-
-            <p className="font-caveat text-base sm:text-lg font-bold leading-tight">
-              The first
-            </p>
-            <p className="font-caveat text-base sm:text-lg font-bold leading-tight">
-              picture
-            </p>
-            <p className="font-caveat text-xs sm:text-sm font-semibold tracking-wider text-[#4A2E20] mt-1">
-              02 . 06 . 17
-            </p>
-            <p className="text-sm text-[#3A1E14] mt-0.5">
-              ♡
-            </p>
           </motion.div>
 
         </div>
 
-        {/* ROW 3: Bottom Left "She said yes!" Polaroid + Bottom Right Couple Embrace Polaroid */}
-        <div className="grid grid-cols-12 gap-2.5 items-start">
+        {/* ROW 3: Bottom Section (Bottom Left "She said yes!" Polaroid + Torn Deckled Parchment Note) */}
+        <div className="relative w-full -mt-[17px] z-30 flex items-start">
           
-          {/* 6. Ring Polaroid: "She said yes! 12.02.23" */}
+          {/* 5. Bottom Left: "She said yes!" Mountain Proposal Polaroid */}
           <motion.div
-            initial={{ opacity: 0, y: 20, rotate: -3 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -2 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.85, delay: 1.05, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 28, rotate: -6, scale: 0.94 }}
+            whileInView={{ opacity: 1, y: 0, rotate: -3.8, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.95, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
             onClick={() => openImage({
-              image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=85",
-              title: "She Said Yes!",
-              date: "12 . 02 . 23",
-              caption: "Under the stars, through happy tears, she said yes."
+              image: "/images/she said yes.webp",
+              title: "She said yes!",
+              subtitle: "A new chapter begins",
+              caption: "She said yes! With mountain peaks as our witness."
             })}
-            className="col-span-6 relative bg-[#E9DAC1] p-2 pb-3 rounded-xs shadow-xl border border-[#CBB89B] hover:scale-105 transition-all duration-300 cursor-pointer group"
+            style={{
+              background: 'linear-gradient(145deg, #F5E8D2 0%, #ECD7B7 40%, #DFCA9F 100%)',
+              boxShadow: '0 14px 32px -4px rgba(0,0,0,0.75), 0 4px 12px rgba(0,0,0,0.45), inset 0 0 16px rgba(110, 75, 20, 0.18)',
+            }}
+            className="w-[52%] p-2 pb-3.5 rounded-[2px] border border-[#BFA882]/60 cursor-pointer transform hover:rotate-0 hover:scale-105 transition-all duration-300 group select-none relative z-30 shrink-0"
           >
-            <WashiTape className="w-9 h-3.5 -top-1.5 left-2 rotate-[-5deg]" />
-
-            <div className="aspect-[4/3.5] w-full overflow-hidden bg-black/40 border border-[#bfa98b]/40 relative">
+            {/* Photo Container */}
+            <div className="aspect-[4/3.4] w-full overflow-hidden bg-black/60 shadow-inner border border-[#9A7D58]/30">
               <img
-                src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80"
-                alt="Engagement Ring"
-                className="w-full h-full object-cover filter sepia-[0.35] contrast-[1.1] brightness-[0.88] group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
+                src="/images/she said yes.webp"
+                alt="She said yes!"
+                className="w-full h-full object-cover filter contrast-[1.04] brightness-[0.98] group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 
-            <div className="text-center pt-2 pb-0.5 text-[#2C1810]">
-              <p className="font-caveat text-sm sm:text-base font-bold leading-tight">
+            {/* Handwritten Text - High Contrast & Crystal Clear */}
+            <div className="text-center pt-2.5 pb-0.5">
+              <p className="font-caveat text-[17px] sm:text-[18px] font-bold leading-none tracking-tight text-[#1A0A02]">
                 She said yes!
               </p>
-              <p className="font-caveat text-xs sm:text-sm text-[#4A2E20] leading-none mt-0.5">
-                12 . 02 . 23
-              </p>
             </div>
           </motion.div>
 
-          {/* 7. Romantic Embrace Polaroid */}
+          {/* 6. Bottom Right Hand-Torn Deckled Parchment Note: "A new chapter / begins / ♡" */}
           <motion.div
-            initial={{ opacity: 0, y: 20, rotate: 3 }}
-            whileInView={{ opacity: 1, y: 0, rotate: 1.5 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.85, delay: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 28, rotate: 6, scale: 0.92 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 2.5, scale: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.95, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
             onClick={() => openImage({
-              image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
-              title: "Before The Big One",
-              date: "Forever Bound",
-              caption: "Ready for our greatest chapter together."
+              image: "/images/she said yes.webp",
+              title: "A new chapter begins",
+              subtitle: "Forever together",
+              caption: "A new chapter begins."
             })}
-            className="col-span-6 relative bg-[#E9DAC1] p-2 pb-3 rounded-xs shadow-xl border border-[#CBB89B] hover:scale-105 transition-all duration-300 cursor-pointer group"
+            style={{
+              filter: 'drop-shadow(0 10px 22px rgba(0,0,0,0.65)) drop-shadow(0 2px 6px rgba(0,0,0,0.4))',
+            }}
+            className="w-[calc(49%-4px)] p-2.5 sm:p-3 py-4 sm:py-4.5 text-center flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300 absolute right-0 bottom-[-14px] z-20 select-none relative"
           >
-            <WashiTape className="w-9 h-3.5 -top-1.5 right-2 rotate-[12deg]" />
+            {/* Background layer with torn deckled edge filter (separated from text for 100% crisp sharpness) */}
+            <div
+              className="absolute inset-0 pointer-events-none rounded-[1px]"
+              style={{
+                filter: 'url(#torn-deckled-edge)',
+                background: 'linear-gradient(135deg, #F5E9D2 0%, #E8D3B0 45%, #D6BB90 100%)',
+              }}
+            />
 
-            <div className="aspect-[4/3.8] w-full overflow-hidden bg-black/40 border border-[#bfa98b]/40 relative">
-              <img
-                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80"
-                alt="Romantic couple embrace"
-                className="w-full h-full object-cover filter sepia-[0.35] contrast-[1.08] brightness-[0.9] group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
+            {/* Inner edge burn shading */}
+            <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_14px_rgba(105,68,18,0.22)]" />
+
+            {/* 100% Crisp & Sharp Handwritten Text */}
+            <p className="font-caveat text-[17px] sm:text-[18.5px] font-bold leading-tight tracking-tight text-[#1A0A02] relative z-10">
+              A new chapter
+            </p>
+            <p className="font-caveat text-[17px] sm:text-[18.5px] font-bold leading-tight tracking-tight mt-0.5 text-[#2A1408] relative z-10">
+              begins
+            </p>
+            <div className="mt-1.5 flex justify-center relative z-10">
+              <SketchHeart className="w-4 h-4 text-[#1A0A02]" />
             </div>
           </motion.div>
 
@@ -300,34 +321,59 @@ export function StoryTimeline() {
 
       {/* Bottom Subtitle & Animated Chevron Indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 15 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.9, delay: 1.45, ease: "easeOut" }}
-        className="text-center mt-3 w-full flex flex-col items-center space-y-1"
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="text-center mt-2.5 w-full flex flex-col items-center space-y-0.5"
       >
-        <p className="font-cormorant text-xs sm:text-sm tracking-[0.24em] text-[#EBD1A5] uppercase font-normal leading-relaxed">
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 1.0 }}
+          className="font-cormorant text-[13px] sm:text-sm tracking-[0.26em] text-[#EBD1A5] uppercase font-normal leading-relaxed"
+        >
           A FEW CHAPTERS
-        </p>
-        <p className="font-cormorant text-xs sm:text-sm tracking-[0.24em] text-[#EBD1A5] uppercase font-normal leading-relaxed">
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 1.08 }}
+          className="font-cormorant text-[13px] sm:text-sm tracking-[0.26em] text-[#EBD1A5] uppercase font-normal leading-relaxed"
+        >
           BEFORE THE BIG ONE.
-        </p>
+        </motion.p>
 
-        <p className="font-cormorant text-[10px] tracking-[0.28em] text-[#EBD1A5]/75 uppercase font-light pt-1">
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 1.18 }}
+          className="font-cormorant text-[10.5px] sm:text-[11px] tracking-[0.28em] text-[#EBD1A5]/80 uppercase font-light pt-0.5"
+        >
           AND NOW...
-        </p>
+        </motion.p>
 
         {/* Pulsing Down Chevron */}
         <motion.div
-          animate={{ y: [0, 4, 0], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 1.28 }}
           className="pt-1 text-[#EBD1A5]/80"
         >
-          <ChevronDown className="w-3.5 h-3.5" />
+          <motion.div
+            animate={{ y: [0, 4, 0], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="w-3.5 h-3.5" />
+          </motion.div>
         </motion.div>
       </motion.div>
 
-      {/* Interactive Portal Image Popup Modal (Rendered Directly in Document Body) */}
+      {/* Interactive Portal Image Popup Modal */}
       {typeof document !== 'undefined' && createPortal(
         <AnimatePresence>
           {activePopup && (
@@ -364,14 +410,14 @@ export function StoryTimeline() {
                   />
                 </div>
 
-                {/* Caption & Date Details */}
+                {/* Caption & Details */}
                 <div className="p-3 space-y-1">
                   <h4 className="font-playfair text-xl text-[#EBD1A5] font-semibold">
                     {activePopup.title}
                   </h4>
-                  {activePopup.date && (
+                  {activePopup.subtitle && (
                     <p className="font-caveat text-lg text-gold-400 font-bold">
-                      {activePopup.date}
+                      {activePopup.subtitle}
                     </p>
                   )}
                   {activePopup.caption && (

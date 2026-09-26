@@ -238,7 +238,7 @@ body {
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
   background-color: #2E050B;
-  background-image: url('/plain bg.jpeg');
+  background-image: url('/images/background.webp');
   background-size: cover;
   background-position: center;
   border-radius: 46px;
@@ -263,7 +263,9 @@ body {
 
   body {
     background-color: #2E050B;
-    overflow-y: auto;
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
   }
 
   .desktop-viewport-container {
@@ -305,53 +307,6 @@ body {
     border-radius: 0 !important;
     height: 100vh;
     height: 100dvh;
-  }
-
-  /* Subtle proportional boost for mobile text sizes */
-  .font-cormorant {
-    letter-spacing: 0.22em;
-  }
-
-  /* Section Numbers & Headers on Mobile */
-  [class*="font-cormorant"][class*="text-2xl"] {
-    font-size: 1.85rem !important;
-  }
-
-  [class*="font-cormorant"][class*="text-3xl"] {
-    font-size: 2.25rem !important;
-  }
-
-  [class*="font-cormorant"][class*="text-4xl"] {
-    font-size: 2.75rem !important;
-  }
-
-  /* Micro badges & labels on Mobile */
-  [class*="text-[10px]"] {
-    font-size: 11.5px !important;
-  }
-
-  [class*="text-[9px]"] {
-    font-size: 10.5px !important;
-  }
-
-  [class*="text-[8.5px]"] {
-    font-size: 10px !important;
-  }
-
-  [class*="text-[8px]"] {
-    font-size: 9.5px !important;
-  }
-
-  [class*="text-[7.5px]"] {
-    font-size: 9px !important;
-  }
-
-  [class*="text-xs"] {
-    font-size: 0.84rem !important;
-  }
-
-  [class*="text-sm"] {
-    font-size: 0.96rem !important;
   }
 }
 
@@ -466,7 +421,7 @@ body {
 /* Luxury Crimson Minimal Texture Background */
 .bg-paper-pattern {
   background-color: #2E050B;
-  background-image: url('/plain bg.jpeg');
+  background-image: url('/images/background.webp');
   background-size: cover;
   background-position: center;
 }

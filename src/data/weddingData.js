@@ -3,256 +3,294 @@
 export const weddingData = {
   couple: {
     groom: {
-      name: "Sahil Mehta",
-      shortName: "Sahil",
+      name: "Apoorv Goel",
+      shortName: "Apoorv",
       role: "The Groom",
-      bio: "An architect who designs grand spaces with soul, Sahil fell in love with Riya's infectious laugh and radiant warmth.",
-      parents: "Son of Mrs. Sunita & Mr. Rajesh Mehta",
-      image: "/groom.webp",
+      bio: "A story of their own.",
+      parents: "Vikash Goel & Sushma Goel",
+      grandparents: "Shri Khem Goel & Smt. Kalpana Goel",
+      image: "/images/apoorv.webp",
     },
     bride: {
-      name: "Riya Kapoor",
-      shortName: "Riya",
+      name: "Chhavi Falod",
+      shortName: "Chhavi",
       role: "The Bride",
-      bio: "A classical dancer and creative storyteller, Riya found her steady anchor and eternal dance partner in Sahil.",
-      parents: "Daughter of Mrs. Vandana & Mr. Vikram Kapoor",
-      image: "/bride.webp",
+      bio: "A story of their own.",
+      parents: "Salil Falod & Radhika Falod",
+      grandparents: "Shri Kunjbihari Falod & Smt. Beena Falod",
+      image: "/images/chhavi.webp",
     },
-    togetherHero: "/open animation.webp",
-    monogram: "R & S",
-    weddingDateString: "December 18, 2026",
-    weddingDateISO: "2026-12-18T18:30:00",
-    hashtag: "#RiyaFoundHerSahil",
-    tagline: "A story of their own.",
+    togetherHero: "/images/event page top image.webp",
+    monogram: "A & C",
+    weddingDateString: "9 • 10 • 11 December 2026",
+    weddingDateISO: "2026-12-09T19:00:00",
+    hashtag: "#ApoorvedByChhavi",
+    tagline: "A STORY OF THEIR OWN",
   },
 
   storyMilestones: [
     {
       id: 1,
-      year: "Autumn 2021",
-      title: "The First Coffee in Old Town",
-      location: "Roastery & Co., Colaba",
-      description: "What was intended to be a brief thirty-minute coffee turned into five hours of endless laughter, debating art, and discovering an effortless bond.",
-      image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80",
-      tag: "Serendipity"
+      title: "The first hello",
+      subtitle: "Somewhere in time",
+      image: "/images/first hello.webp",
     },
     {
       id: 2,
-      year: "Summer 2022",
-      title: "The Road Trip to the Hills",
-      location: "Shimla & Spiti Valley",
-      description: "Stuck in a mountain downpour with a flat tire and hot chai, we realized that with each other, every unexpected roadblock turns into an unforgettable adventure.",
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80",
-      tag: "Adventure"
+      title: "First Movie",
+      image: "/images/first movie.webp",
     },
     {
       id: 3,
-      year: "Winter 2024",
-      title: "The Sunset Proposal",
-      location: "Lake Pichola, Udaipur",
-      description: "Under a sky painted in shades of gold and amber, with the gentle lapping of palace waters, Aarav got down on one knee. Through tears of joy, Meera said YES!",
-      image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80",
-      tag: "The Yes Moment"
+      title: "The first trip",
+      subtitle: "Exploring new horizons",
+      image: "/images/first trip.webp",
     },
     {
       id: 4,
-      year: "Today & Forever",
-      title: "The Sacred Vows",
-      location: "The Grand Royal Palace",
-      description: "Surrounded by our dearest family and friends, we prepare to take the seven sacred steps and weave our lives into one beautiful destiny.",
-      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80",
-      tag: "Forever"
-    }
+      title: "She said yes!",
+      subtitle: "A new chapter begins",
+      image: "/images/she said yes.webp",
+    },
   ],
 
   events: [
     {
-      id: "haldi",
-      title: "Haldi & Floral Phoolon Ki Holi",
-      date: "Friday, Dec 18, 2026",
-      time: "10:00 AM – 1:30 PM",
-      venue: "The Courtyard Gardens, Royal Palace",
-      dressCode: "Sunshine Yellow & Floral Pastels",
-      palette: ["#F9D342", "#FFF275", "#FF8E72"],
-      description: "A joyous morning of turmeric blessings, marigold showers, traditional folk rhythms, and pure laughter.",
-      icon: "lotus",
+      id: "bollywood_social",
+      tag: "A NIGHT FULL OF STORIES",
+      subtitle: "“Picture abhi shuru hui hai\nmere dost...”",
+      scriptSubtitle: "“Picture abhi shuru hui hai mere dost...”",
+      quoteLines: ["“Picture abhi shuru hui hai", "mere dost...”"],
+      isQuoteSubtitle: true,
+      title: "BOLLYWOOD SOCIAL",
+      titleLines: ["BOLLYWOOD", "SOCIAL"],
+      isTwoLineTitle: true,
+      hideTopDivider: true,
+      date: "09 DECEMBER",
+      time: "7:00 PM",
+      displayDate: "Wednesday, 9 Dec • 7:00 PM",
+      fullFormattedDate: "WEDNESDAY, 9TH DECEMBER 2026",
+      formattedTime: "7:00 PM",
+      locationShort: "NORTH CENTRAL LAWN",
+      taglineLines: ["SAME PEOPLE", "A BRIGHTER STORY"],
+      symbolType: "clapperboard",
+      bannerImage: "/images/bollywood social banner.webp",
+      modalImage: "/images/bollywood social banner.webp",
+      venue: "North Central Lawn, Goa Marriott Resort & Spa",
+      dressCode: "Bollywood Glamour & Retro Chic",
+      description: "Bollywood Social — Wednesday, 9th December 2026 at 7:00 PM on the North Central Lawn. Kickstarting the wedding festivities with high-energy Bollywood music, cocktails, and celebration by the sea.",
       calendar: {
-        title: "Aarav & Meera - Haldi Ceremony",
-        start: "20261218T043000Z",
-        end: "20261218T080000Z",
-        location: "The Courtyard Gardens, Royal Palace, Jaipur",
-        details: "Join us for Haldi & Floral Holi. Dress Code: Sunshine Yellow & Pastels."
+        title: "Apoorv & Chhavi - Bollywood Social",
+        start: "20261209T133000Z",
+        end: "20261209T183000Z",
+        location: "North Central Lawn, Goa Marriott Resort & Spa, Panaji, Goa",
+        details: "Bollywood Social: “Picture abhi shuru hui hai mere dost...”. Wednesday, 9th December 2026 at 7:00 PM on the North Central Lawn."
+      }
+    },
+    {
+      id: "haldi",
+      tag: "THE SUNSHINE SCENE",
+      subtitle: "Yellow Paradise",
+      scriptSubtitle: "Yellow Paradise",
+      title: "HALDI",
+      date: "10 DECEMBER",
+      time: "11:00 AM",
+      displayDate: "Thursday, 10 Dec • 11:00 AM",
+      fullFormattedDate: "THURSDAY, 10TH DECEMBER 2026",
+      formattedTime: "11:00 AM",
+      locationShort: "POOLSIDE",
+      taglineLines: ["SUNSHINE. LAUGHTER.", "A BRIGHTER TOMORROW."],
+      symbolType: "sun",
+      bannerImage: "/images/haldi banner.webp",
+      modalImage: "/images/haldi banner.webp",
+      venue: "Poolside, Goa Marriott Resort & Spa",
+      dressCode: "Sunshine Yellow & Floral Pastels",
+      description: "Yellow Paradise — Thursday, 10th December 2026 at 11:00 AM by the Poolside. A sun-kissed celebration of auspicious turmeric blessings, fragrant floral showers, and vibrant traditional rhythms.",
+      calendar: {
+        title: "Apoorv & Chhavi - Haldi (The Sunshine Scene)",
+        start: "20261210T053000Z",
+        end: "20261210T093000Z",
+        location: "Poolside, Goa Marriott Resort & Spa, Panaji, Goa",
+        details: "Haldi (The Sunshine Scene): Yellow Paradise. Thursday, 10th December 2026 at 11:00 AM by the Poolside."
       }
     },
     {
       id: "sangeet",
-      title: "Sangeet & Cocktail Soirée",
-      date: "Friday, Dec 18, 2026",
-      time: "7:00 PM Onwards",
-      venue: "The Crystal Ballroom & Poolside Lawn",
+      tag: "THE MUSICAL",
+      subtitle: "Aaja Nachle",
+      scriptSubtitle: "Aaja Nachle",
+      title: "SANGEET",
+      date: "10 DECEMBER",
+      time: "7:00 PM",
+      displayDate: "Thursday, 10 Dec • 7:00 PM",
+      fullFormattedDate: "THURSDAY, 10TH DECEMBER 2026",
+      formattedTime: "7:00 PM",
+      locationShort: "GRAND BALLROOM",
+      taglineLines: ["DANCE. CELEBRATE.", "MAKE MEMORIES."],
+      symbolType: "discoball",
+      bannerImage: "/images/sangeet banner.webp",
+      modalImage: "/images/sangeet banner.webp",
+      venue: "Grand Ballroom, Goa Marriott Resort & Spa",
       dressCode: "Indo-Western Glamour & Shimmer",
-      palette: ["#1B3B2B", "#D4AF37", "#2C050C"],
-      description: "An electrifying evening of high-energy dance performances, soulful music, gourmet cocktails, and endless celebration.",
-      icon: "drum",
+      description: "Aaja Nachle — Thursday, 10th December 2026 at 7:00 PM in the Grand Ballroom. An electrifying musical night filled with dazzling stage performances, celebration toasts, and non-stop dancing under the Goan night sky.",
       calendar: {
-        title: "Aarav & Meera - Sangeet & Cocktail Soirée",
-        start: "20261218T133000Z",
-        end: "20261218T183000Z",
-        location: "The Crystal Ballroom, Royal Palace, Jaipur",
-        details: "An evening of dance and music. Dress Code: Indo-Western Glamour."
+        title: "Apoorv & Chhavi - Sangeet (The Musical)",
+        start: "20261210T133000Z",
+        end: "20261210T183000Z",
+        location: "Grand Ballroom, Goa Marriott Resort & Spa, Panaji, Goa",
+        details: "Sangeet (The Musical): Aaja Nachle. Thursday, 10th December 2026 at 7:00 PM in the Grand Ballroom."
+      }
+    },
+    {
+      id: "mayra",
+      tag: "THE HOMECOMING",
+      subtitle: "Padharo Mhare Des",
+      scriptSubtitle: "Padharo Mhare Des",
+      title: "MAYRA",
+      date: "11 DECEMBER",
+      time: "10:00 AM",
+      displayDate: "Friday, 11 Dec • 10:00 AM",
+      fullFormattedDate: "FRIDAY, 11TH DECEMBER 2026",
+      formattedTime: "10:00 AM",
+      locationShort: "GRAND BALLROOM",
+      taglineLines: ["A LITTLE BIT OF HOME,", "ALL THE WAY IN GOA."],
+      symbolType: "jharokha",
+      bannerImage: "/images/mayra banner.webp",
+      modalImage: "/images/mayra banner.webp",
+      venue: "Grand Ballroom, Goa Marriott Resort & Spa",
+      dressCode: "Traditional Rajasthani & Ethnic Festive",
+      description: "Padharo Mhare Des — Friday, 11th December 2026 at 10:00 AM in the Grand Ballroom. A traditional maternal blessing ceremony rich with heartfelt rituals, folk melodies, and sweet moments of family bonding.",
+      calendar: {
+        title: "Apoorv & Chhavi - Mayra (The Homecoming)",
+        start: "20261211T043000Z",
+        end: "20261211T083000Z",
+        location: "Grand Ballroom, Goa Marriott Resort & Spa, Panaji, Goa",
+        details: "Mayra (The Homecoming): Padharo Mhare Des. Friday, 11th December 2026 at 10:00 AM in the Grand Ballroom."
       }
     },
     {
       id: "wedding",
-      title: "The Holy Muhurtham & Vows",
-      date: "Saturday, Dec 19, 2026",
-      time: "4:30 PM – 7:30 PM",
-      venue: "The Heritage Mandap by the Lake",
-      dressCode: "Traditional Royal Silk & Sherwanis",
-      palette: ["#831227", "#D4AF37", "#FAF6EE"],
-      description: "The sacred Vedic rituals, varmala exchange under the twilight sky, and seven pheras around the holy fire.",
-      icon: "mandap",
+      tag: "THE BIG DAY",
+      subtitle: "Eternal Vows",
+      scriptSubtitle: "Eternal Vows",
+      title: "THE WEDDING",
+      isWeddingSchedule: true,
+      date: "11 DECEMBER",
+      time: "2:00 PM & 5:00 PM",
+      displayDate: "Friday, 11 Dec • 2 PM Baarat / 5 PM Pheras",
+      fullFormattedDate: "FRIDAY, 11TH DECEMBER 2026",
+      formattedTime: "2:00 PM BAARAT • 5:00 PM PHERAS",
+      weddingEvents: [
+        { name: "BAARAT – ARRIVAL LOUNGE", time: "2:00 PM" },
+        { name: "PHERAS – BY THE BEACH", time: "5:00 PM" }
+      ],
+      locationShort: "BY THE BEACH",
+      taglineLines: ["WHERE THE STORY", "MEETS FOREVER."],
+      symbolType: "beachsunset",
+      bannerImage: "/images/the wedding banner.webp",
+      modalImage: "/images/the wedding banner.webp",
+      venue: "Arrival Lounge (Baarat 2 PM) & By the Beach (Pheras 5 PM)",
+      dressCode: "Royal Traditional Silks & Sherwanis",
+      description: "Eternal Vows — Friday, 11th December 2026. The Baarat is at 2:00 PM at the Arrival Lounge, followed by Pheras at 5:00 PM By the Beach overlooking the sunset ocean.",
       calendar: {
-        title: "Aarav & Meera - The Wedding Ceremony",
-        start: "20261219T110000Z",
-        end: "20261219T143000Z",
-        location: "The Heritage Mandap, Royal Palace, Jaipur",
-        details: "The sacred wedding ceremony and pheras. Dress Code: Traditional Royal Attire."
+        title: "Apoorv & Chhavi - The Wedding (The Big Day)",
+        start: "20261211T083000Z",
+        end: "20261211T143000Z",
+        location: "Arrival Lounge & By the Beach, Goa Marriott Resort & Spa, Panaji, Goa",
+        details: "The Wedding (The Big Day): Eternal Vows. Friday, 11th December 2026. Baarat is at 2:00 PM at the Arrival Lounge, followed by Pheras at 5:00 PM By the Beach."
       }
-    },
-    {
-      id: "reception",
-      title: "The Grand Royal Reception",
-      date: "Saturday, Dec 19, 2026",
-      time: "8:00 PM – Midnight",
-      venue: "The Grand Regal Pavilion",
-      dressCode: "Black Tie & Elegant Ethnic Formals",
-      palette: ["#0E1626", "#D4AF37", "#FFFFFF"],
-      description: "A majestic feast under chandeliers with live symphony orchestra, champagne toasts, and our first royal dance.",
-      icon: "rings",
-      calendar: {
-        title: "Aarav & Meera - Grand Reception",
-        start: "20261219T143000Z",
-        end: "20261219T183000Z",
-        location: "The Grand Regal Pavilion, Royal Palace, Jaipur",
-        details: "The Grand Wedding Reception dinner and celebrations."
-      }
-    }
-  ],
-
-  moments: [
-    {
-      id: 1,
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
-      quote: "Every love story is beautiful, but ours is our absolute favorite.",
-      caption: "Twilight in the Royal Gardens"
-    },
-    {
-      id: 2,
-      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1600&q=80",
-      quote: "In your smile, I see something more beautiful than the stars.",
-      caption: "Laughter caught between glances"
-    },
-    {
-      id: 3,
-      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=80",
-      quote: "Together is a wonderful place to be.",
-      caption: "Hand in hand towards our tomorrow"
-    },
-    {
-      id: 4,
-      image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1600&q=80",
-      quote: "Whatever our souls are made of, his and mine are the same.",
-      caption: "Sunset promises by the water"
-    }
-  ],
-
-  gallery: [
-    {
-      id: 1,
-      category: "pre-wedding",
-      title: "Royal Archways",
-      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=80",
-      heightClass: "h-96",
-      caption: "Moments framed by heritage stone and golden sunlight."
-    },
-    {
-      id: 2,
-      category: "candid",
-      title: "Pure Joy",
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80",
-      heightClass: "h-72",
-      caption: "Unfiltered laughter as the golden hour set over the courtyard."
-    },
-    {
-      id: 3,
-      category: "proposal",
-      title: "The Sunset Proposal",
-      image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80",
-      heightClass: "h-80",
-      caption: "The exact second she said forever by the lake."
-    },
-    {
-      id: 4,
-      category: "pre-wedding",
-      title: "The Palace Promenade",
-      image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=900&q=80",
-      heightClass: "h-96",
-      caption: "Grace and regal elegance in traditional silk embroidery."
-    },
-    {
-      id: 5,
-      category: "moments",
-      title: "Whispered Promises",
-      image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80",
-      heightClass: "h-72",
-      caption: "Quiet conversations amidst the grand celebrations."
-    },
-    {
-      id: 6,
-      category: "candid",
-      title: "Sacred Florals",
-      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80",
-      heightClass: "h-88",
-      caption: "Fresh jasmine and marigolds blessed for the auspicious day."
     }
   ],
 
   venue: {
-    name: "The Rambagh Heritage Palace & Resort",
-    address: "Bhawani Singh Road, Jaipur, Rajasthan 302005, India",
-    directionsUrl: "https://maps.google.com/?q=The+Rambagh+Palace+Jaipur",
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.1287950346386!2d75.80373247597148!3d26.899403476657923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db421d3f0a0bb%3A0xe55d0458df43e945!2sRambagh%20Palace%2C%20Jaipur!5e0!3m2!1sen!2sin!4v1709462800000!5m2!1sen!2sin",
-    airportDistance: "11 km from Jaipur International Airport (JAI) — ~25 mins drive",
-    trainDistance: "6 km from Jaipur Railway Junction — ~15 mins drive",
-    valet: "Complimentary 24/7 Valet Parking available at Palace Main Portico.",
-    hotelInfo: "Special wedding accommodation rates reserved for guests using code: MEERAARAV2026."
+    name: "Goa Marriott Resort & Spa",
+    location: "Panaji, Goa",
+    fullAddress: "Goa Marriott Resort & Spa, Miramar, Panaji, Goa 403001",
+    dates: "9.10.11 DECEMBER 2026",
+    groomGrandparents: {
+      grandfather: "Shri Khem Goel",
+      grandmother: "Smt. Kalpana Goel",
+    },
+    brideGrandparents: {
+      grandfather: "Shri Kunjbihari Falod",
+      grandmother: "Smt. Beena Falod",
+    },
+    groomParents: "Vikash Goel & Sushma Goel",
+    brideParents: "Salil Falod & Radhika Falod",
+    rsvp: [
+      { name: "Vinay Goel", phone: "+977 9802022887" },
+      { name: "Vishal Goel", phone: "+91 9799299320" }
+    ],
+    signOff: "The Goel & Falod Families"
   },
 
-  initialWishes: [
+  gallery: [
     {
       id: 1,
-      name: "Rohan & Ananya Verma",
-      relation: "Friends of the Groom",
-      message: "Wishing you both a lifetime of adventures, laughter, and endless happiness! Counting down the days to celebrate with you!",
-      date: "Just now",
-      likes: 12
+      title: "SUNSET PROMISES BY THE WATER",
+      quote: "Whatever our souls are made of, his and mine are the same.",
+      image: "/gallery/1.webp",
     },
     {
       id: 2,
-      name: "Pooja Kapoor",
-      relation: "Cousin of the Bride",
-      message: "My dearest Meera, seeing you with Aarav fills our hearts with so much joy. You both are made for each other! Can't wait for Sangeet night!",
-      date: "2 hours ago",
-      likes: 18
+      title: "WHISPERS IN THE GOLDEN HOUR",
+      quote: "You are my today and all of my tomorrows.",
+      image: "/gallery/2.webp",
     },
     {
       id: 3,
-      name: "Vikram Uncle & Priya Aunty",
-      relation: "Family Friends",
-      message: "Heartiest congratulations and divine blessings for a glorious married life ahead. May God shower prosperity on the new couple!",
-      date: "Yesterday",
-      likes: 9
-    }
+      title: "UNDER THE STARRY SKY",
+      quote: "In all the world, there is no heart for me like yours.",
+      image: "/gallery/3.webp",
+    },
+    {
+      id: 4,
+      title: "FOREVER & ALWAYS",
+      quote: "Two souls with but a single thought, two hearts that beat as one.",
+      image: "/gallery/4.webp",
+    },
+    {
+      id: 5,
+      title: "THE SWEETEST BEGINNING",
+      quote: "Every love story is beautiful, but ours is my favorite.",
+      image: "/gallery/5.webp",
+    },
+    {
+      id: 6,
+      title: "A DANCE IN THE BREEZE",
+      quote: "With you, every moment feels like poetry.",
+      image: "/gallery/6.webp",
+    },
+    {
+      id: 7,
+      title: "GOLDEN SHORES & LAUGHTER",
+      quote: "I have found the one whom my soul loves.",
+      image: "/gallery/7.webp",
+    },
+    {
+      id: 8,
+      title: "JOURNEYS OF THE HEART",
+      quote: "Together is our favorite place to be.",
+      image: "/gallery/8.webp",
+    },
+    {
+      id: 9,
+      title: "STOLEN GLANCES",
+      quote: "Loved you yesterday, love you still, always have, always will.",
+      image: "/gallery/9.webp",
+    },
+    {
+      id: 10,
+      title: "THE SACRED PROMISE",
+      quote: "Hand in hand, into our forever.",
+      image: "/gallery/10.webp",
+    },
+    {
+      id: 11,
+      title: "MOMENTS IN TIME",
+      quote: "To love and to cherish, from this day forward.",
+      image: "/gallery/11.webp",
+    },
   ]
 };
+

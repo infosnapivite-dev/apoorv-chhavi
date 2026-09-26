@@ -172,15 +172,10 @@ export function CreamButterflies({ isInvitationOpen }) {
       document.head.appendChild(styleEl);
     }
 
+    let r1, r2;
     const timer = setTimeout(() => {
-      const isMobile = window.innerWidth <= 600;
-      const scrollTarget = (!isMobile && document.querySelector('.inner-app-container'))
-        ? document.querySelector('.inner-app-container')
-        : window;
-
-      const triggerElement = (!isMobile && document.querySelector('.inner-app-container'))
-        ? document.querySelector('.inner-app-container')
-        : document.body;
+      const scrollerEl = document.querySelector('.inner-app-container') || window;
+      const triggerElement = document.querySelector('main') || scrollerEl;
 
       // Butterfly 1: Large Leading Butterfly (Left Top Hero -> S-curve flight down)
       const b1 = document.getElementById('bf-1');
@@ -193,9 +188,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
+            scroller: scrollerEl,
             start: 'top top',
-            end: '25% top',
+            end: '22% top',
             scrub: 1.2,
           },
         });
@@ -212,9 +207,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
+            scroller: scrollerEl,
             start: 'top top',
-            end: '30% top',
+            end: '26% top',
             scrub: 1.4,
           },
         });
@@ -231,9 +226,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
+            scroller: scrollerEl,
             start: '10% top',
-            end: '45% top',
+            end: '40% top',
             scrub: 1.5,
           },
         });
@@ -249,9 +244,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
-            start: '15% top',
-            end: '50% top',
+            scroller: scrollerEl,
+            start: '14% top',
+            end: '46% top',
             scrub: 1.3,
           },
         });
@@ -267,9 +262,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
-            start: '28% top',
-            end: '65% top',
+            scroller: scrollerEl,
+            start: '24% top',
+            end: '54% top',
             scrub: 1.2,
           },
         });
@@ -286,9 +281,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
-            start: '42% top',
-            end: '78% top',
+            scroller: scrollerEl,
+            start: '36% top',
+            end: '66% top',
             scrub: 1.4,
           },
         });
@@ -304,9 +299,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
-            start: '55% top',
-            end: '85% top',
+            scroller: scrollerEl,
+            start: '48% top',
+            end: '76% top',
             scrub: 1.3,
           },
         });
@@ -322,9 +317,9 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
-            start: '65% top',
-            end: '95% top',
+            scroller: scrollerEl,
+            start: '58% top',
+            end: '85% top',
             scrub: 1.5,
           },
         });
@@ -340,8 +335,8 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
-            start: '75% top',
+            scroller: scrollerEl,
+            start: '68% top',
             end: 'bottom bottom',
             scrub: 1.2,
           },
@@ -359,8 +354,8 @@ export function CreamButterflies({ isInvitationOpen }) {
           ease: 'power1.out',
           scrollTrigger: {
             trigger: triggerElement,
-            scroller: scrollTarget === window ? undefined : scrollTarget,
-            start: '82% top',
+            scroller: scrollerEl,
+            start: '78% top',
             end: 'bottom bottom',
             scrub: 1.4,
           },
@@ -380,10 +375,23 @@ export function CreamButterflies({ isInvitationOpen }) {
           delay: (index * 0.25) % 1.5,
         });
       });
+
+      // Refresh ScrollTrigger to recalculate precise positions
+      ScrollTrigger.refresh();
+      r1 = setTimeout(() => ScrollTrigger.refresh(), 500);
+      r2 = setTimeout(() => ScrollTrigger.refresh(), 1500);
     }, 200);
+
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener('resize', handleResize);
 
     return () => {
       clearTimeout(timer);
+      clearTimeout(r1);
+      clearTimeout(r2);
+      window.removeEventListener('resize', handleResize);
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, [isInvitationOpen]);

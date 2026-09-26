@@ -6,9 +6,8 @@ import { EnvelopeGate } from './components/EnvelopeGate';
 import { HeroCouple } from './components/HeroCouple';
 import { StoryTimeline } from './components/StoryTimeline';
 import { EventsSection } from './components/EventsSection';
-import { TheMomentSection } from './components/TheMomentSection';
 import { CountdownSection } from './components/CountdownSection';
-import { MomentsSlider } from './components/MomentsSlider';
+import { GallerySection } from './components/GallerySection';
 import { VenueSection } from './components/VenueSection';
 import { FooterThankYou } from './components/FooterThankYou';
 import { FloatingControls } from './components/FloatingControls';
@@ -21,12 +20,11 @@ export default function App() {
     <div className="desktop-viewport-container">
       {/* Realistic iPhone 15 Pro Chassis on Desktop */}
       <IPhoneFrame>
-        {/* 1. Gated Royal Envelope Opening Screen */}
+        {/* 1. Opening Animation & The Hook (01 THE HOOK) */}
         <AnimatePresence>
           {!isInvitationOpen && (
             <EnvelopeGate
               onOpen={() => setIsInvitationOpen(true)}
-              couple={weddingData.couple}
             />
           )}
         </AnimatePresence>
@@ -37,38 +35,34 @@ export default function App() {
             isInvitationOpen ? "opacity-100" : "opacity-0 h-full overflow-hidden"
           }`}
         >
-          {/* Floating Navigation & Audio Controls */}
+          {/* Floating Audio & Scroll Controls */}
           <FloatingControls isInvitationOpen={isInvitationOpen} />
 
           <main style={{ position: 'relative', width: '100%', height: '100%', scrollBehavior: 'smooth' }}>
             {/* GSAP Scroll-Triggered Cream Butterflies */}
             <CreamButterflies isInvitationOpen={isInvitationOpen} />
 
-            {/* 2. The Couple Hero Section (02 THE CAST) */}
+            {/* 2. The Cast (02 THE CAST) */}
             <HeroCouple couple={weddingData.couple} />
 
-            {/* 3. Our Story Section (03 THE STORY) */}
-            <StoryTimeline milestones={weddingData.storyMilestones} />
+            {/* 3. The Story (03 THE STORY) */}
+            <StoryTimeline />
 
-            {/* 4. Events & Ceremonies Section (04 THE WEDDING WORLD) */}
+            {/* 4. The Wedding World (04 THE WEDDING WORLD) */}
             <EventsSection events={weddingData.events} />
 
-            {/* 5. The Moment (05 THE MOMENT) */}
-            <TheMomentSection weddingEvent={weddingData.events?.find(e => e.id === 'wedding')} />
-
-            {/* 6. Premium Live Countdown Section */}
+            {/* 5. The Countdown (05 THE COUNTDOWN) */}
             <CountdownSection
               targetDateISO={weddingData.couple.weddingDateISO}
-              coupleNames={weddingData.couple.monogram}
             />
 
-            {/* 7. The Moments (Cinematic Ken Burns Reel) */}
-            <MomentsSlider moments={weddingData.moments} />
+            {/* 6. The Gallery (07 THE GALLERY) */}
+            <GallerySection items={weddingData.gallery} />
 
-            {/* 8. Venue & Destination Section (07 THE FINAL CREDITS) */}
-            <VenueSection venue={weddingData.venue} />
+            {/* 7. The Final Credits & Families (06 THE FINAL CREDITS) */}
+            <VenueSection />
 
-            {/* 9. Thank You Footer Section */}
+            {/* 8. The Premiere (7 THE PREMIERE) */}
             <FooterThankYou couple={weddingData.couple} />
           </main>
         </div>
