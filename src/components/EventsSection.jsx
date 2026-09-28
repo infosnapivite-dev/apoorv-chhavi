@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ChevronDown, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, X, CalendarPlus } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { weddingData } from '../data/weddingData';
+import { generateGoogleCalendarUrl, weddingFullEvent } from '../utils/calendarHelper';
 
 // Official Marriott "M" Circular Emblem Badge
 function MarriottLogoBadge({ className = "w-6 h-6 sm:w-7 sm:h-7" }) {
@@ -309,6 +311,22 @@ function getEventBannerSrc(event) {
 export const EventsSection = React.memo(function EventsSection({ events = weddingData.events }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
+  const handleCalendarClick = (e, eventData = weddingFullEvent) => {
+    // Interactive celebratory golden sparkle burst effect
+    const rect = e?.currentTarget?.getBoundingClientRect();
+    const x = rect ? (rect.left + rect.width / 2) / window.innerWidth : 0.5;
+    const y = rect ? (rect.top + rect.height / 2) / window.innerHeight : 0.7;
+
+    confetti({
+      particleCount: 40,
+      spread: 60,
+      origin: { x, y },
+      colors: ['#FFE8A3', '#D4AF37', '#F6DA86', '#FFFFFF', '#C59B27'],
+      disableForReducedMotion: true,
+      scalar: 0.9,
+    });
+  };
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') setSelectedEvent(null);
@@ -483,6 +501,41 @@ export const EventsSection = React.memo(function EventsSection({ events = weddin
             </motion.div>
           ))}
         </div>
+
+        {/* Enhanced Luxury Yellow Golden Add to Calendar Pill Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.85, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full px-4 sm:px-6 pt-5 pb-2 flex flex-col items-center justify-center text-center"
+        >
+          <motion.a
+            href={generateGoogleCalendarUrl(weddingFullEvent)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => handleCalendarClick(e, weddingFullEvent)}
+            whileHover={{ scale: 1.04, y: -1 }}
+            whileTap={{ scale: 0.94 }}
+            transition={{ type: "spring", stiffness: 450, damping: 18 }}
+            className="group relative flex items-center justify-center gap-2.5 w-full max-w-[270px] sm:max-w-[290px] py-2.5 sm:py-3 px-6 rounded-full bg-gradient-to-r from-[#D4A338] via-[#F6DA86] to-[#D4A338] bg-[length:200%_auto] hover:bg-[position:right_center] border border-[#FDE69E]/70 shadow-[0_4px_20px_rgba(212,163,56,0.45),0_0_15px_rgba(246,218,134,0.3)] hover:shadow-[0_6px_28px_rgba(246,218,134,0.65),0_0_20px_rgba(212,163,56,0.5)] active:shadow-[0_2px_10px_rgba(212,163,56,0.4)] transition-all duration-500 cursor-pointer no-underline text-[#150406] overflow-hidden select-none"
+          >
+            {/* Animated Continuous Specular Light Beam Gliding Across Surface */}
+            <motion.div
+              animate={{ x: ['-120%', '220%'] }}
+              transition={{ duration: 2.8, repeat: Infinity, repeatDelay: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-25deg] pointer-events-none"
+            />
+
+            {/* Subtle Inner Ring Glow */}
+            <div className="absolute inset-[1px] rounded-full border border-white/30 pointer-events-none" />
+
+            <CalendarPlus className="relative z-10 w-4 h-4 text-[#150406] shrink-0 transition-transform duration-300 group-hover:scale-115 group-hover:rotate-6 stroke-[2.3]" />
+            <span className="relative z-10 font-cormorant text-[14.5px] sm:text-[15.5px] tracking-[0.22em] text-[#150406] font-bold uppercase leading-none whitespace-nowrap drop-shadow-[0_1px_1px_rgba(255,255,255,0.4)]">
+              ADD TO CALENDAR
+            </span>
+          </motion.a>
+        </motion.div>
 
       </div>
 
@@ -752,6 +805,41 @@ export const EventsSection = React.memo(function EventsSection({ events = weddin
                   >
                     <EventSymbol symbolType={selectedEvent.symbolType} />
                   </motion.div>
+
+                  {/* 8. Direct Add Event to Calendar Button */}
+                  <motion.a
+                    href={generateGoogleCalendarUrl(
+                      selectedEvent.calendar
+                        ? {
+                            title: selectedEvent.calendar.title || selectedEvent.title,
+                            start: selectedEvent.calendar.start || "20261209T133000Z",
+                            end: selectedEvent.calendar.end || "20261211T183000Z",
+                            location: selectedEvent.calendar.location || selectedEvent.venue,
+                            details: selectedEvent.calendar.details || selectedEvent.description,
+                          }
+                        : weddingFullEvent
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.84 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleCalendarClick(e, selectedEvent.calendar || weddingFullEvent);
+                    }}
+                    whileHover={{ scale: 1.04, y: -1 }}
+                    whileTap={{ scale: 0.94 }}
+                    className="relative group overflow-hidden mt-3.5 flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#D4A338] via-[#F6DA86] to-[#D4A338] bg-[length:200%_auto] hover:bg-[position:right_center] border border-[#FDE69E]/70 text-[#150406] font-bold transition-all duration-500 cursor-pointer text-xs font-cormorant tracking-widest uppercase shadow-[0_4px_16px_rgba(212,163,56,0.4)] hover:shadow-[0_4px_22px_rgba(246,218,134,0.6)] active:scale-95 no-underline"
+                  >
+                    <motion.div
+                      animate={{ x: ['-120%', '220%'] }}
+                      transition={{ duration: 2.8, repeat: Infinity, repeatDelay: 1.2, ease: "easeInOut" }}
+                      className="absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-25deg] pointer-events-none"
+                    />
+                    <CalendarPlus className="relative z-10 w-3.5 h-3.5 text-[#150406] stroke-[2.3] group-hover:rotate-6 transition-transform" />
+                    <span className="relative z-10">Add Event to Calendar</span>
+                  </motion.a>
                 </div>
               </motion.div>
             </motion.div>
