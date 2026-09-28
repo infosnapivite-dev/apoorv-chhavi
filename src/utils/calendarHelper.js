@@ -1,4 +1,4 @@
-// Utility for generating calendar links (Google, Apple iCal, Outlook, Yahoo)
+// Utility for generating universal calendar events (Apple Calendar, Google, Android, Outlook, etc.)
 
 export const weddingFullEvent = {
   title: "Apoorv & Chhavi's Wedding Celebrations",
@@ -22,48 +22,7 @@ EVENTS SCHEDULE:
 Hashtag: #ApoorvedByChhavi`
 };
 
-export function generateGoogleCalendarUrl(event = weddingFullEvent) {
-  const baseUrl = "https://calendar.google.com/calendar/render";
-  const params = new URLSearchParams({
-    action: "TEMPLATE",
-    text: event.title,
-    details: event.details || event.description || "",
-    location: event.location || event.venue || "",
-    dates: `${event.start}/${event.end}`,
-  });
-  return `${baseUrl}?${params.toString()}`;
-}
-
-export function generateOutlookUrl(event = weddingFullEvent) {
-  const baseUrl = "https://outlook.live.com/calendar/0/deeplink/compose";
-  const params = new URLSearchParams({
-    path: "/calendar/action/compose",
-    rru: "addevent",
-    subject: event.title,
-    body: event.details || event.description || "",
-    location: event.location || event.venue || "",
-    startdt: event.startISO || "2026-12-09T19:00:00",
-    enddt: event.endISO || "2026-12-11T23:59:00",
-  });
-  return `${baseUrl}?${params.toString()}`;
-}
-
-export function generateYahooUrl(event = weddingFullEvent) {
-  const baseUrl = "https://calendar.yahoo.com/";
-  const params = new URLSearchParams({
-    v: "60",
-    view: "d",
-    type: "20",
-    title: event.title,
-    st: event.start,
-    et: event.end,
-    desc: event.details || event.description || "",
-    in_loc: event.location || event.venue || "",
-  });
-  return `${baseUrl}?${params.toString()}`;
-}
-
-export function downloadIcsFile(event = weddingFullEvent, filename = "Apoorv-Chhavi-Wedding.ics") {
+export function buildIcsContent(event = weddingFullEvent) {
   const cleanDescription = (event.details || event.description || "")
     .replace(/\r\n/g, "\n")
     .replace(/\n/g, "\\n")
@@ -80,14 +39,14 @@ export function downloadIcsFile(event = weddingFullEvent, filename = "Apoorv-Chh
 
   const nowISO = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 
-  const icsContent = [
+  return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
     "PRODID:-//Apoorv & Chhavi Wedding//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    `UID:wedding-${Date.now()}@apoorvchhavi.wedding`,
+    `UID:wedding-${Date.now()}-${Math.random().toString(36).substring(2, 9)}@apoorvchhavi.wedding`,
     `DTSTAMP:${nowISO}`,
     `DTSTART:${event.start}`,
     `DTEND:${event.end}`,
@@ -103,7 +62,15 @@ export function downloadIcsFile(event = weddingFullEvent, filename = "Apoorv-Chh
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
+}
 
+export function buildIcsDataUri(event = weddingFullEvent) {
+  const icsContent = buildIcsContent(event);
+  return `data:text/calendar;charset=utf-8,${encodeURIComponent(icsContent)}`;
+}
+
+export function downloadIcsFile(event = weddingFullEvent, filename = "Apoorv-Chhavi-Wedding.ics") {
+  const icsContent = buildIcsContent(event);
   const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
   const url = window.URL.createObjectURL(blob);
   const link = document.createElement("a");
@@ -111,6 +78,31 @@ export function downloadIcsFile(event = weddingFullEvent, filename = "Apoorv-Chh
   link.setAttribute("download", filename);
   document.body.appendChild(link);
   link.click();
-  document.body.removeChild(link);
-  window.URL.revokeObjectURL(url);
+  setTimeout(() => {
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  }, 1000);
+}
+
+/**
+ * Universal Native Calendar Trigger:
+ * - On iPhone / iPad (iOS): triggers .ics file which opens native Apple Calendar
+ * - On Mac (macOS): opens Apple Calendar / native calendar
+ * - On Android & Windows: triggers .ics file which opens default calendar app (Samsung, Google, Outlook, etc.)
+ */
+export function addToDeviceCalendar(event = weddingFullEvent) {
+  const cleanFilename = `${(event.title || 'Wedding_Event').replace(/[^a-zA-Z0-9]/g, '_')}.ics`;
+  downloadIcsFile(event, cleanFilename);
+}
+
+export function generateGoogleCalendarUrl(event = weddingFullEvent) {
+  const baseUrl = "https://calendar.google.com/calendar/render";
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: event.title,
+    details: event.details || event.description || "",
+    location: event.location || event.venue || "",
+    dates: `${event.start}/${event.end}`,
+  });
+  return `${baseUrl}?${params.toString()}`;
 }
