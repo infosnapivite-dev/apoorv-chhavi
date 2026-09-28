@@ -519,7 +519,7 @@ export const EventsSection = React.memo(function EventsSection({ events = weddin
             whileHover={{ scale: 1.04, y: -1 }}
             whileTap={{ scale: 0.94 }}
             transition={{ type: "spring", stiffness: 450, damping: 18 }}
-            className="group relative flex items-center justify-center gap-2.5 w-full max-w-[270px] sm:max-w-[290px] py-2.5 sm:py-3 px-6 rounded-full bg-gradient-to-r from-[#D4A338] via-[#F6DA86] to-[#D4A338] bg-[length:200%_auto] hover:bg-[position:right_center] border border-[#FDE69E]/70 shadow-[0_4px_20px_rgba(212,163,56,0.45),0_0_15px_rgba(246,218,134,0.3)] hover:shadow-[0_6px_28px_rgba(246,218,134,0.65),0_0_20px_rgba(212,163,56,0.5)] active:shadow-[0_2px_10px_rgba(212,163,56,0.4)] transition-all duration-500 cursor-pointer text-[#150406] overflow-hidden select-none"
+            className="group relative flex items-center justify-center gap-2 w-auto px-6 py-2.5 rounded-full bg-gradient-to-r from-[#D4A338] via-[#F6DA86] to-[#D4A338] bg-[length:200%_auto] hover:bg-[position:right_center] border border-[#FDE69E]/70 shadow-[0_4px_20px_rgba(212,163,56,0.45),0_0_15px_rgba(246,218,134,0.3)] hover:shadow-[0_6px_28px_rgba(246,218,134,0.65),0_0_20px_rgba(212,163,56,0.5)] active:shadow-[0_2px_10px_rgba(212,163,56,0.4)] transition-all duration-500 cursor-pointer text-[#150406] overflow-hidden select-none"
           >
             {/* Animated Continuous Specular Light Beam Gliding Across Surface */}
             <motion.div
@@ -531,8 +531,8 @@ export const EventsSection = React.memo(function EventsSection({ events = weddin
             {/* Subtle Inner Ring Glow */}
             <div className="absolute inset-[1px] rounded-full border border-white/30 pointer-events-none" />
 
-            <CalendarPlus className="relative z-10 w-4 h-4 text-[#150406] shrink-0 transition-transform duration-300 group-hover:scale-115 group-hover:rotate-6 stroke-[2.3]" />
-            <span className="relative z-10 font-cormorant text-[14.5px] sm:text-[15.5px] tracking-[0.22em] text-[#150406] font-bold uppercase leading-none whitespace-nowrap drop-shadow-[0_1px_1px_rgba(255,255,255,0.4)]">
+            <CalendarPlus className="relative z-10 w-3.5 h-3.5 text-[#150406] shrink-0 transition-transform duration-300 group-hover:scale-115 group-hover:rotate-6 stroke-[2.3]" />
+            <span className="relative z-10 font-cormorant text-[11.5px] sm:text-[12px] tracking-[0.16em] text-[#150406] font-bold uppercase leading-none whitespace-nowrap drop-shadow-[0_1px_1px_rgba(255,255,255,0.4)]">
               ADD TO CALENDAR
             </span>
           </motion.button>
